@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: 1
         },
-        image_URL: {
+        imageURL: {
             type: DataTypes.STRING,
             allowNull: true
         }
