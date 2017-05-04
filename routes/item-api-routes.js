@@ -1,10 +1,13 @@
 var db = require("../models");
 
+var itemId = 1;
+var userDataId = 1;
+
 // Routes
 // =============================================================
 module.exports = function(app) {
 
-    // POST a new item to lend
+    // Signed-in user can add a new item to lend
     app.post("/api/lend", function(req, res) {
         db.Item.create({
             name: "sewing maching",
@@ -14,6 +17,32 @@ module.exports = function(app) {
             UserId: 1
         }).then(function(dbItem) {
             res.json(dbItem);
+        });
+    });
+
+    // Lender updating the status of an item to unavailable
+    app.put("/api/unavailable", function(req, res) {
+        db.Item.update({
+            available: false
+        }, {
+            where: {
+                id: itemId
+            }
+        }).then(function(dbPost) {
+            res.json(dbPost);
+        });
+    });
+
+    // Lender updating the status of an item to available 
+    app.put("/api/available", function(req, res) {
+        db.Item.update({
+            available: true
+        }, {
+            where: {
+                id: itemId
+            }
+        }).then(function(dbPost) {
+            res.json(dbPost);
         });
     });
 };
