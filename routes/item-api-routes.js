@@ -81,6 +81,22 @@ module.exports = function(app) {
         });
     });
 
+    // Lender can update the information from an item already posted
+    app.put("/api/updateItem", function(req, res) {
+        db.Item.update({
+            name: "Sewing Machine",
+            category: "Homegoods",
+            description: "Bernina sewing machine",
+            imageURL: "google.com"
+        }, {
+            where: {
+                id: itemId
+            }
+        }).then(function(dbPost) {
+            res.json(dbPost);
+        });
+    });
+
     // DELETE
     // Lender can delete an item from the database
     app.delete("/api/delete", function(req, res) {
