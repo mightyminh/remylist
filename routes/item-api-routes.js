@@ -54,11 +54,11 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/api/lentByUser", function(req, res) {
-        db.User.getLending().then(function(associatedItems) {
-            res.json(dbItem);
-        });
-    });
+    // app.get("/api/lentByUser", function(req, res) {
+    //     db.User.getLending().then(function(associatedItems) {
+    //         res.json(dbItem);
+    //     });
+    // });
 
     // UPDATE
     // Lender update the status of an item to unavailable
