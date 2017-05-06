@@ -2,8 +2,10 @@ var db = require("../models");
 
 module.exports = function(app, passport) {
 
+    // Passport local strategies and session management.
     var LocalStrategy = require('passport-local').Strategy;
     var session = require('express-session');
+    var isLoggedIn = require("./restrict.js");
 
     app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
     app.use(passport.initialize());
@@ -20,7 +22,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    passport.use(new LocalStrategy({
+    passport.use('local-signin', new LocalStrategy({
         usernameField: 'username',
         passwordField: 'password',
         passReqToCallback: true
@@ -38,10 +40,9 @@ module.exports = function(app, passport) {
         });
     }));
 
-    app.post('/login', passport.authenticate('local', {
+    app.post('/login', passport.authenticate('local-signin', {
         successRedirect: '/profile',
-        failureRedirect: '/',
-        failureFlash: 'Invalid username or password.'
+        failureRedirect: '/'
     }));
 
     app.get('/logout', function(req, res) {
@@ -83,7 +84,7 @@ module.exports = function(app, passport) {
         failureRedirect: '/signup'
     }));
 
-    app.get('/api/profile', isLoggedIn, function(req, res) {
+    app.get('/api/profile', isLoggedIn, function(req, res, next) {
         var userDataId = req.user.dataValues.id;
         db.User.findAll({
             where: {
@@ -91,10 +92,8 @@ module.exports = function(app, passport) {
             }
         }).then(function(dbGet) {
             res.json(dbGet);
-            console.log(dbGet);
         });
     });
-
 
     // Logged-in user lend items
     app.get("/api/lend", isLoggedIn, function(req, res) {
@@ -106,13 +105,6 @@ module.exports = function(app, passport) {
             include: [db.User]
         }).then(function(dbGet) {
             res.json(dbGet);
-            console.log(dbGet);
         });
     });
-
-    function isLoggedIn(req, res, next) {
-        if (req.isAuthenticated())
-            return next();
-        res.redirect('/');
-    }
 };
