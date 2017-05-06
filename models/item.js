@@ -30,10 +30,16 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 Item.belongsTo(models.User, {
-                    foreignKey: {
+                        as: "Lender",
+                        foreignKey: 'lender_id',
                         allowNull: false
-                    }
-                });
+                    }),
+                    Item.belongsTo(models.User, {
+                        as: "Borrower",
+                        foreignKey: 'borrower_id',
+                        allowNull: true,
+                        defaultValue: null
+                    });
             }
         }
     });
