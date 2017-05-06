@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "pikachu",
+        "password": "adam123",
         "database": "remy_list",
         "host": "127.0.0.1",
         "dialect": "mysql"
