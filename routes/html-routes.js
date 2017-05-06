@@ -1,8 +1,12 @@
 var path = require("path");
+var isLoggedIn = require("./restrict.js");
 
 // Routes
-// =============================================================
-module.exports = function(app) {
+module.exports = function(app, passport) {
+    var session = require('express-session');
+    app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/home.html"));
@@ -12,7 +16,7 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/signup.html"));
     });
 
-    app.get("/profile", function(req, res) {
+    app.get("/profile", isLoggedIn, function(req, res) {
         res.sendFile(path.join(__dirname, "../public/profile.html"));
     });
 

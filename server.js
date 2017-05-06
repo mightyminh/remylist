@@ -22,7 +22,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("./public"));
 
 // Routes
-require("./routes/html-routes.js")(app);
+require("./routes/html-routes.js")(app, passport);
 require("./routes/item-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app, passport);
 
