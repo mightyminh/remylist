@@ -22,8 +22,9 @@ module.exports = function(app, passport) {
 
     passport.use(new LocalStrategy({
         usernameField: 'username',
-        passwordField: 'password'
-    }, function(username, password, done) {
+        passwordField: 'password',
+        passReqToCallback: true
+    }, function(req, username, password, done) {
         db.User.findOne({
             where: { userName: username }
         }).then(function(user) {
@@ -39,7 +40,8 @@ module.exports = function(app, passport) {
 
     app.post('/login', passport.authenticate('local', {
         successRedirect: '/profile',
-        failureRedirect: '/login',
+        failureRedirect: '/',
+        failureFlash: 'Invalid username or password.'
     }));
 
     app.get('/logout', function(req, res) {
@@ -111,6 +113,6 @@ module.exports = function(app, passport) {
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
             return next();
-        res.redirect('/login');
+        res.redirect('/');
     }
 };
