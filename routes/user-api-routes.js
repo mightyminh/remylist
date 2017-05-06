@@ -100,9 +100,12 @@ module.exports = function(app, passport) {
         var userDataId = req.user.dataValues.id;
         db.Item.findAll({
             where: {
-                UserId: userDataId
+                lender_id: userDataId
             },
-            include: [db.User]
+            include: [{
+                model: db.User,
+                as: 'Lender'
+            }]
         }).then(function(dbGet) {
             res.json(dbGet);
         });
