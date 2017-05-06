@@ -4,21 +4,32 @@ $(document).ready(function() {
         $.get('/api/profile', renderuserData);
     }
 
+    function updateUserDetails() {
+        $.post('/api/profile', updateUserData);
+    }
+
     function renderuserData(data) {
         var userData = data;
         if (!userData || !userData.length) {
-            // ID/CLASS text for “record not available”.
+            $(".info-display").text("record not available");
         } else {
-            // userData object values are following, render each for a table row 
-            // userData["0"].userName
-            // userData["0"].fullName
-            // userData["0"].email
-            // userData["0"].location
-            // assign id to an attribute (eg. user-id) to the edit button
-            // userData["0"].id 
+
+            $("#full-name").text("Full name: " + userData["0"].fullName);
+            $("#user-name").text("Username: " + userData["0"].userName);
+            $("#email").text("Email: " + userData["0"].email);
+            $("#location").text("Location: " + userData["0"].location);
+
         }
         console.log(userData);
     }
 
     getUserDetails();
 });
+
+function updateUserDetails() {
+    $('#edit-info').on('click', function() {
+        updateUserDetails();
+        // use userData["0"].id 
+    });
+
+}
