@@ -35,10 +35,12 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 User.hasMany(models.Item, {
+                        as: 'Lending',
                         foreignKey: 'lender_id',
                         onDelete: "cascade"
                     }),
                     User.hasMany(models.Item, {
+                        as: 'Borrowing',
                         foreignKey: 'borrower_id'
                     })
             }
