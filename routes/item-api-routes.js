@@ -10,7 +10,7 @@ module.exports = function(app) {
     // Signed-in user can add a new item to lend
     app.post("/api/lend", function(req, res) {
         db.Item.create({
-            name: "sewing maching",
+            name: "sewing machine",
             category: "Homegoods",
             description: "simple sewing machine",
             imageURL: "https://images-na.ssl-images-amazon.com/images/I/6183wgXfS5L._SL1500_.jpg",
@@ -38,6 +38,17 @@ module.exports = function(app) {
         db.Item.update({
             available: true
         }, {
+            where: {
+                id: itemId
+            }
+        }).then(function(dbPost) {
+            res.json(dbPost);
+        });
+    });
+
+    // Lender can delete an item from the database
+    app.delete("/api/delete", function(req, res) {
+        db.Item.destroy({
             where: {
                 id: itemId
             }
