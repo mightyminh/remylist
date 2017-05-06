@@ -55,8 +55,8 @@ module.exports = function(app) {
     });
 
     // UPDATE
-    // Lender updating the status of an item to unavailable
-    app.put("/api/unavailable", function(req, res) {
+    // Lender update the status of an item to unavailable
+    app.put("/api/itemUnavailable", function(req, res) {
         db.Item.update({
             available: false
         }, {
@@ -68,8 +68,8 @@ module.exports = function(app) {
         });
     });
 
-    // Lender updating the status of an item to available 
-    app.put("/api/available", function(req, res) {
+    // Lender update the status of an item to available 
+    app.put("/api/itemAvailable", function(req, res) {
         db.Item.update({
             available: true
         }, {
@@ -81,7 +81,7 @@ module.exports = function(app) {
         });
     });
 
-    // Lender can update the information from an item already posted
+    // Lender update the information from an item already posted
     app.put("/api/updateItem", function(req, res) {
         db.Item.update({
             name: "Sewing Machine",
