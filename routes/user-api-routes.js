@@ -20,7 +20,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    passport.use(new LocalStrategy({
+    passport.use('local-signin', new LocalStrategy({
         usernameField: 'username',
         passwordField: 'password',
         passReqToCallback: true
@@ -38,7 +38,7 @@ module.exports = function(app, passport) {
         });
     }));
 
-    app.post('/login', passport.authenticate('local', {
+    app.post('/login', passport.authenticate('local-signin', {
         successRedirect: '/profile',
         failureRedirect: '/',
         failureFlash: 'Invalid username or password.'
@@ -91,7 +91,6 @@ module.exports = function(app, passport) {
             }
         }).then(function(dbGet) {
             res.json(dbGet);
-            console.log(dbGet);
         });
     });
 
@@ -106,7 +105,6 @@ module.exports = function(app, passport) {
             include: [db.User]
         }).then(function(dbGet) {
             res.json(dbGet);
-            console.log(dbGet);
         });
     });
 
