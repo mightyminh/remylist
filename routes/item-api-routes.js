@@ -2,11 +2,14 @@ var db = require("../models");
 
 var itemId = 1;
 var userDataId = 1;
+var itemCat = "Homegoods";
+var location = "san diego"
 
 // Routes
 // =============================================================
 module.exports = function(app) {
 
+    // CREATE
     // Signed-in user can add a new item to lend
     app.post("/api/lend", function(req, res) {
         db.Item.create({
@@ -20,6 +23,38 @@ module.exports = function(app) {
         });
     });
 
+    // RETRIEVE 
+    // Select all items in database
+    app.get("/api/allItems", function(req, res) {
+        db.Item.findAll({}).then(function(dbItem) {
+            res.json(dbItem);
+        });
+    });
+
+    // Select all items from chosen category
+    app.get("/api/itemsCategory", function(req, res) {
+        db.Item.findAll({
+            where: {
+                category: itemCat
+            }
+        }).then(function(dbItem) {
+            res.json(dbItem);
+        });
+    });
+
+    // Select all items from a chosen location
+    app.get("/api/itemsLocation", function(req, res) {
+        db.User.findAll({
+            where: {
+                location: location
+            },
+            include: [db.Item]
+        }).then(function(dbItem) {
+            res.json(dbItem);
+        });
+    });
+
+    // UPDATE
     // Lender updating the status of an item to unavailable
     app.put("/api/unavailable", function(req, res) {
         db.Item.update({
@@ -46,6 +81,7 @@ module.exports = function(app) {
         });
     });
 
+    // DELETE
     // Lender can delete an item from the database
     app.delete("/api/delete", function(req, res) {
         db.Item.destroy({
