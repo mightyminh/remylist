@@ -46,15 +46,15 @@
       <h3 class="panel-title text-center">Login</h3>
     </div>
     <div class="panel-body">
-  <form class="form-inline">
+  <form class="form-inline" method="post" action="/login">
       <div class="input-group">
       <!-- <label id="loginLabel"> Username  <span> </span> </label> -->
-        <input type="name" class="form-control" size="30" placeholder="Username" required>
+        <input type="text" class="form-control" size="30" name="username" placeholder="Username" required>
         <br><br>
         <!-- <label id="loginLabel"> Password   </label> -->
-        <input type="text" class="form-control" size="30" placeholder="Password" required>
+        <input type="password" name="password" class="form-control" size="30" placeholder="Password" required>
   <br><br>
-  <button type="button" class="btn btn-danger form-control" size="30">Sign in</button>
+  <button type="submit" class="btn btn-danger form-control" size="30">Sign in</button>
   <br> <br> <br>
   <a href="url"> Signup to Lend & Borrow </a>
       </div>
@@ -66,6 +66,11 @@
 </div>
 
   </div>
+
+   
+   
+
+
   
   <footer class="text-left" id="footerFontSize"> 
   <p>Copyright &copy; 2017 REMY Inc.</p>
