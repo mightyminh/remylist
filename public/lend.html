@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <style>
+        object#display {
+            width: 100%;
+            height: 300px;
+        }
+        
+        h1#heading {
+            font-family: 'Righteous', cursive;
+            color: #cf2037;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center page-header">
+            <h1 id="heading">Web application functions</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">Function list</div>
+                    <div class="panel-body">
+                        <p>
+                            <a href="#" onclick="loadPage('BrowseButton_Bootstrap.html')"> BrowseButton_Bootstrap </a><br> Bootstrap browse button for uploading an image.
+                        </p>
+                        <p>
+                            <a href="#" onclick="loadPage('FaceAPI_Ajax.html')"> FaceAPI_Ajax </a><br> AJAX call to face API to calculate age of a person using JQuery.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Functions</div>
+                    <div class="panel-body text-center" id="content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function loadPage(pageLink) {
+        document.getElementById("content").innerHTML = "<object id='display' type='text/html' data='" +
+            pageLink + "'></object>";
+    }
+</script>
+Contact GitHub API Training Shop Blog About

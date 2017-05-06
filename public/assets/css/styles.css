@@ -8,6 +8,12 @@ body {
 .container {
 
 }
+
+#image{
+height: :120px;
+width:120px;
+}
+
 .jumbotron { 
   height: :100%;
   width:100%;
