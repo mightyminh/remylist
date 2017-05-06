@@ -1,112 +1,83 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <!-- Tab Title -->
-    <title>Remy List (working title) </title>
-    <!-- Tab Image -->
- 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Custom Styling -->
-    <link rel="stylesheet" href="css/styles.css">
+<html lang="en">
 
-  </head>
-
-  <body>
-
-    <!-- Page Container -->
-    <div class="container-fluid">
-  <center>
-  <div class="row">
- 
-    <div class="jumbotron">
-    <h1 class="text-center"> Remy List 
-
-     </h1>    
-    <p> Lend an item. Borrow an item. </p>     
-        
-    </center>
-    </div>
+<head>
+    <title>Remy's List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+</head>
 
 
-  <div class="form">
-      
-      <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
-      </ul>
-      
-      <div class="tab-content">
-        <div id="signup">   
-          <h1>Sign Up for Free</h1>
-          
-          <form action="/" method="post">
-          
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                First Name<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off" />
+<body>
+
+
+
+    <div class="container text-center">
+
+        <div class="jumbotron">
+            <h1 class="text-center">Remy's List <br> <img src="assets/img/bearpigcircle.png" alt="bearpig" align="middle" font-size="20px" style="width:30%">
+            </h1>
+            <h4> </h4>
+            <p class="text-center">The Neighborhood Hub</p>
+
+
+            <div class="row">
+                <div class="col-md-1"> </div>
+                <div class="col-md-4">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">Just Browsing?</h3>
+                        </div>
+                        <div class="panel-body">
+                            <a href="url">Click to see what people are offering to lend</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"> </div>
+
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">Login</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline" method="post" action="/login">
+                                <div class="input-group">
+                                    <!-- <label id="loginLabel"> Username  <span> </span> </label> -->
+                                    <input type="text" class="form-control" size="30" name="username" placeholder="Username" required>
+                                    <br><br>
+                                    <!-- <label id="loginLabel"> Password   </label> -->
+                                    <input type="password" name="password" class="form-control" size="30" placeholder="Password" required>
+                                    <br><br>
+                                    <button type="submit" class="btn btn-danger form-control" size="30">Sign in</button>
+                                    <br> <br> <br>
+                                    <a href="url"> Signup to Lend & Borrow </a>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-        
-            <div class="field-wrap">
-              <label>
-                Last Name<span class="req">*</span>
-              </label>
-              <input type="text"required autocomplete="off"/>
-            </div>
-          </div>
-
-          <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Set A Password<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-          
-          <button type="submit" class="button button-block"/>Get Started</button>
-          
-          </form>
 
         </div>
-        
-        <div id="login">   
-          <h1>Welcome Back!</h1>
-          
-          <form action="/" method="post">
-          
-            <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Password<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-          
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
-          
-          <button class="button button-block"/>Log In</button>
-          
-          </form>
 
-        </div>
-        
-      </div><!-- tab-content -->
-      
-</div> <!-- /form -->  
-  </body>
-</html> 
+
+
+
+
+
+        <footer class="text-left" id="footerFontSize">
+            <p>Copyright &copy; 2017 REMY Inc.</p>
+
+        </footer>
+
+</body>
+
+</html>
