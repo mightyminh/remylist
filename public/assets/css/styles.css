@@ -1,25 +1,25 @@
-
-
 body {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-/*background:url("../images/egypt-h-bg3.jpg");*/
-
-}
-.container {
-
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /*background:url("../images/egypt-h-bg3.jpg");*/
 }
 
-#image{
-height: :120px;
-width:120px;
+.container {}
+
+#image {
+    height: : 120px;
+    width: 120px;
 }
 
-.jumbotron { 
-  height: :100%;
-  width:100%;
-            background:url("../img/radial-gradient.png");
+.infoDisplay {
+    text-align: left;
+}
 
-    /*background-color: #f4511e; /* Orange */*/
+.bg {
+    height: : 100%;
+    width: 100%;
+    background: url("../img/radial-gradient.png");
+    /*background-color: #f4511e; /* Orange */
+    */
     /*color: #ffffff;*/
     color: #fff;
     padding: 100px 25px;
@@ -28,26 +28,33 @@ width:120px;
 .bg-grey {
     background-color: #f6f6f6;
 }
+
 .logo {
     font-size: 200px;
 }
+
 @media screen and (max-width: 768px) {
     .col-sm-4 {
         text-align: center;
         margin: 25px 0;
     }
 }
+
+
 /*#loginLabel{
    display: inline-block;
    font-size: 16px;
-   col*/or: grey;
+   col*/
+
+or: grey;
+
 }
+
 /*.loginInput{
     float: right;
     display: inline-block;
 }*/
-
-#footerFontSize{
+#footerFontSize {
     font-size: 9px;
 }
 .font {
