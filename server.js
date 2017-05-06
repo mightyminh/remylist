@@ -6,6 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var passport = require('passport');
 
 // Sets up the Express App
 // =============================================================
@@ -25,10 +26,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("./public"));
 
 // Routes =============================================================
-
 require("./routes/html-routes.js")(app);
 require("./routes/item-api-routes.js")(app);
-require("./routes/user-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app, passport);
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({ force: true }).then(function() {
