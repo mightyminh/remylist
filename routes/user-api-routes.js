@@ -69,19 +69,19 @@ module.exports = function(app, passport) {
         failureRedirect: '/'
     }));
 
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
-
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/profile',
         failureRedirect: '/signup'
     }));
 
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+    // Logged-in user details
     app.get('/api/profile', isLoggedIn, function(req, res, next) {
-        var userDataId = req.user.dataValues.id;
+        var userDataId = req.user.id;
         db.User.findAll({
             where: {
                 id: userDataId
@@ -93,7 +93,7 @@ module.exports = function(app, passport) {
 
     // Logged-in user lend items
     app.get("/api/lend", isLoggedIn, function(req, res) {
-        var userDataId = req.user.dataValues.id;
+        var userDataId = req.user.id;
         db.Item.findAll({
             where: {
                 lender_id: userDataId
