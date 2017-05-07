@@ -4,7 +4,7 @@ var isLoggedIn = require("./restrict.js");
 
 module.exports = function(app, passport) {
 
-    // Passport local strategies.
+    // Passport local strategies for sign-in and sign-up.
     var LocalStrategy = require('passport-local').Strategy;
 
     passport.serializeUser(function(user, done) {
