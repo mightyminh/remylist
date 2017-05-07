@@ -40,6 +40,13 @@ body {
     }
 }
 
+#by-category{
+    position: relative;
+}
+
+#by-location{
+    position: relative;
+}
 
 /*#loginLabel{
    display: inline-block;
