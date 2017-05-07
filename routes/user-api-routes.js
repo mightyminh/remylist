@@ -1,15 +1,10 @@
 var db = require("../models");
+var isLoggedIn = require("./restrict.js");
 
 module.exports = function(app, passport) {
 
-    // Passport local strategies and session management.
+    // Passport local strategies.
     var LocalStrategy = require('passport-local').Strategy;
-    var session = require('express-session');
-    var isLoggedIn = require("./restrict.js");
-
-    app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-    app.use(passport.initialize());
-    app.use(passport.session());
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -40,16 +35,6 @@ module.exports = function(app, passport) {
         });
     }));
 
-    app.post('/login', passport.authenticate('local-signin', {
-        successRedirect: '/profile',
-        failureRedirect: '/'
-    }));
-
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
     passport.use('local-signup', new LocalStrategy({
         passReqToCallback: true
     }, function(req, username, password, done) {
@@ -78,6 +63,17 @@ module.exports = function(app, passport) {
             }
         });
     }));
+
+    app.post('/login', passport.authenticate('local-signin', {
+        successRedirect: '/profile',
+        failureRedirect: '/'
+    }));
+
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
 
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/profile',
