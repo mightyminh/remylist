@@ -1,48 +1,50 @@
 
-
-
 $(document).ready(function() {
 
-    function getAll() {
-        $.get('/api/allitems', renderAll);
-    }
 
+function getAll() {
+        $.get('/api/allItems', renderAll);
+    }
 
 function getAllData() {
-    $('#all').on('click', function() {
-        getAllDetails();
+   $('.all').on('click', function() {
+         getAll();
         // use userData["0"].id 
     });
+}
+ function renderAll(data) {
+        var allData = data;
+        // if (!allData || !allData.length) {
+        //     // $(".info-display").text("record not available");
+        // } else {   
 
-
-
-
-    function getByLocation() {
-        $.get('/api/itemslocation', renderByLocation);
+        // }
+        console.log(allData);
     }
 
-function getByCategory() {
-        $.get('/api/itemscategory', renderByCategory);
-    }
-
-
-
-    function renderuserData(data) {
-        var userData = data;
-        if (!userData || !userData.length) {
-            $(".info-display").text("record not available");
-        } else {
-            
-
-           
-
-        }
-        console.log(userData);
-    }
-
-    getUserDetails();
+    getAllData();
 });
 
 
 
-}
+
+
+
+
+
+
+
+//     function getByLocation() {
+//         $.get('/api/itemslocation', renderByLocation);
+//     }
+
+// function getByCategory() {
+//         $.get('/api/itemscategory', renderByCategory);
+//     }
+
+
+
+    
+
+
+

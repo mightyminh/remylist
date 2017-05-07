@@ -4,9 +4,9 @@ $(document).ready(function() {
         $.get('/api/profile', renderuserData);
     }
 
-    function updateUserDetails() {
-        $.post('/api/profile', updateUserData);
-    }
+    // function updateUserDetails() {
+    //     $.post('/api/profile', updateUserData);
+    // }
 
     function renderuserData(data) {
         var userData = data;
