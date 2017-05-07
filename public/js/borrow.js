@@ -6,10 +6,10 @@ $(document).ready(function() {
     }
 
     function getAllData() {
-        $('.all').on('click', function() {
+       $('.all').on('click', function() {
             getAll();
             // use userData["0"].id 
-        });
+        }); 
     }
 
     function renderAll(data) {
