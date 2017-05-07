@@ -1,3 +1,4 @@
+//Model and authentication check.
 var db = require("../models");
 var isLoggedIn = require("./restrict.js");
 
@@ -91,7 +92,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    // Logged-in user lend items
+    // Logged-in user lend items.
     app.get("/api/lend", isLoggedIn, function(req, res) {
         var userDataId = req.user.id;
         db.Item.findAll({
