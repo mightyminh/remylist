@@ -107,4 +107,18 @@ module.exports = function(app, passport) {
             res.json(dbGet);
         });
     });
+
+    // Logged-in user can update their personal info
+    app.put("/api/update-user", isLoggedIn, function(req, res) {
+        var userDataId = req.user.id;
+        db.User.update({
+            fullName: req.body.updateFullName,
+            email: req.body.updateEmailId,
+            location: req.body.updateLocation
+        }, {
+            where: { id: userDataId }
+        }).then(function(dbPut) {
+            res.json(dbPut);
+        });
+    });
 };
