@@ -80,23 +80,20 @@
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="/api/update-user">
     <div class="container">
       <label class="add-text"><b>Full Name</b></label>
-      <input class="add-input" type="text" placeholder="Edit your Full Name" name="full-name" required>
-
-      <label class="add-text"><b>Username</b></label>
-      <input class="add-input" type="text" placeholder="Edit your Username" name="user-name" required>
+      <input class="add-input" id="update-name" type="text" placeholder="Edit your Full Name" name="fullName" required>
 
       <label class="add-text"><b>Email</b></label>
-      <input class="add-input" type="text" placeholder="Enter new email" name="email">
+      <input class="add-input" id="email" type="text" placeholder="Enter new email" name="email">
 
         <label class="add-text"><b>Location</b></label>
-      <input class="add-input" type="text" placeholder="Enter new Location" name="location">
+      <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" name="location">
 
 <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="addButton">Submit New Info</button>
+        <button type="submit" class="addButton" id="edit-info">Submit New Info</button>
       </div>
     </div>
   </form>
