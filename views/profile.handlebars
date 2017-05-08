@@ -22,8 +22,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-md-offset-2">
                     <div class="image-section">
                         <img id="image" src="assets/img/female-upload.png" class="img-circle">
                     </div>
@@ -43,17 +42,17 @@
                     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger" id="edit-info"> Edit your information </button>
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                        <form class="modal-content animate" action="/api/update-user">
+                        <form class="modal-content animate "id="update-user-info-form">
                             <div class="container">
                                 <label class="add-text"><b>Full Name</b></label>
-                                <input class="add-input" id="update-name" type="text" placeholder="Edit your Full Name" name="fullName" required>
+                                <input class="add-input" id="update-full-name" type="text" placeholder="Edit your Full Name" value="{{data.fullName}}" name="fullName" required>
                                 <label class="add-text"><b>Email</b></label>
-                                <input class="add-input" id="email" type="text" placeholder="Enter new email" name="email">
+                                <input class="add-input" id="update-email-id" type="text" placeholder="Enter new email" value="{{data.email}}" name="email">
                                 <label class="add-text"><b>Location</b></label>
-                                <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" name="location">
+                                <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" value="{{data.location}}"name="location">
                                 <div class="clearfix">
                                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                    <button type="submit" class="addButton" id="edit-info">Submit New Info</button>
+                                    <button type="submit" class="addButton" id="update-user">Submit New Info</button>
                                 </div>
                             </div>
                         </form>
