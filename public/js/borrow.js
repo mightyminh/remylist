@@ -35,9 +35,11 @@ $(document).ready(function() {
 
     function getData() {
         $('.all').on('click', function() {
+            $(".borrow-info").empty();
             getAll();
         });
         $('.category .category1').on('click', function() {
+            $(".borrow-info").empty();
             getCategory1();
         });
         // $('.category .category2').on('click', function() {
