@@ -12,7 +12,7 @@ module.exports = function(app) {
 
     // CREATE
     // Signed-in user can add a new item to lend
-    app.post("/lend", function(req, res) {
+    app.post("/add-item", function(req, res) {
         db.Item.create({
             name: "sewing machine",
             category: "Homegoods",
@@ -27,7 +27,7 @@ module.exports = function(app) {
 
     // RETRIEVE 
     // Select all items in database
-    app.get("/allItems", function(req, res) {
+    app.get("/all-items", function(req, res) {
         db.Item.findAll({})
             .then(function(dbItem) {
                 res.json(dbItem);
@@ -36,7 +36,7 @@ module.exports = function(app) {
     });
 
     // Select all items from chosen category
-    app.get("/itemsByCategory", function(req, res) {
+    app.get("/items-by-category", function(req, res) {
         db.Item.findAll({
             where: {
                 category: itemCat
@@ -48,7 +48,7 @@ module.exports = function(app) {
     });
 
     // Select all items from a chosen location
-    app.get("/itemsByLocation", function(req, res) {
+    app.get("/items-by-location", function(req, res) {
         db.User.findAll({
             where: {
                 location: location
@@ -64,7 +64,7 @@ module.exports = function(app) {
     });
 
     // Get all items lent by user
-    app.get("/itemsByLender", function(req, res) {
+    app.get("/items-by-lender", function(req, res) {
         var userDataId = req.user.id;
         db.Item.findAll({
             where: {
@@ -72,12 +72,12 @@ module.exports = function(app) {
             }
         }).then(function(dbItem) {
             res.json(dbItem);
-            res.render("lend");
+            res.render("lend", dbItem);
         });
     });
 
     // Get all items borrowed by user
-    app.get("/itemsByBorrower", function(req, res) {
+    app.get("/items-by-borrower", function(req, res) {
         var userDataId = req.user.id;
         db.Item.findAll({
             where: {
@@ -91,7 +91,7 @@ module.exports = function(app) {
 
     // UPDATE
     // Lender update the status of an item to unavailable
-    app.put("/itemUnavailable", function(req, res) {
+    app.put("/item-unavailable", function(req, res) {
         db.Item.update({
             available: false
         }, {
@@ -105,7 +105,7 @@ module.exports = function(app) {
     });
 
     // Lender update the status of an item to available 
-    app.put("/itemAvailable", function(req, res) {
+    app.put("/item-available", function(req, res) {
         db.Item.update({
             available: true
         }, {
@@ -119,7 +119,7 @@ module.exports = function(app) {
     });
 
     // Lender update the information from an item already posted
-    app.put("/updateItem", function(req, res) {
+    app.put("/update-item", function(req, res) {
         db.Item.update({
             name: "Sewing Machine",
             category: "Homegoods",
@@ -137,7 +137,7 @@ module.exports = function(app) {
 
     // DELETE
     // Lender can delete an item from the database
-    app.delete("/deleteItem", function(req, res) {
+    app.delete("/delete-item", function(req, res) {
         db.Item.destroy({
             where: {
                 id: itemId
