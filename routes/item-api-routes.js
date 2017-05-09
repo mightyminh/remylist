@@ -71,18 +71,19 @@ module.exports = function(app) {
             }
         }).then(function(dbItem) {
             res.json(dbItem);
-            // res.render("");
+            res.render("");
         });
     });
 
     // Get all items borrowed by user
-    app.get("itemsByBorrower", function(req, res) {
+    app.get("/itemsByBorrower", function(req, res) {
         db.Item.findAll({
             where: {
                 borrower_id: 2
             }
         }).then(function(dbItem) {
             res.json(dbItem);
+            res.render("");
         });
     });
 
