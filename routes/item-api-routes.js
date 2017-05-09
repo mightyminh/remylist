@@ -78,13 +78,14 @@ module.exports = function(app) {
 
     // Get all items borrowed by user
     app.get("/itemsByBorrower", function(req, res) {
+        var userDataId = req.user.id;
         db.Item.findAll({
             where: {
-                borrower_id: 2
+                borrower_id: userDataId
             }
         }).then(function(dbItem) {
             res.json(dbItem);
-            res.render("");
+            res.render("borrow");
         });
     });
 
