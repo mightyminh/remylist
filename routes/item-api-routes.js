@@ -30,8 +30,11 @@ module.exports = function(app) {
     app.get("/all-items", function(req, res) {
         db.Item.findAll({})
             .then(function(dbItem) {
+                var itemsObject = {
+                    items: dbItem
+                };
                 res.json(dbItem);
-                res.render("");
+                res.render("borrow", itemsObject);
             });
     });
 
