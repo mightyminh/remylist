@@ -36,7 +36,7 @@ module.exports = function(app) {
     });
 
     // Select all items from chosen category
-    app.get("/itemsCategory", function(req, res) {
+    app.get("/itemsByCategory", function(req, res) {
         db.Item.findAll({
             where: {
                 category: itemCat
@@ -48,7 +48,7 @@ module.exports = function(app) {
     });
 
     // Select all items from a chosen location
-    app.get("/itemsLocation", function(req, res) {
+    app.get("/itemsByLocation", function(req, res) {
         db.User.findAll({
             where: {
                 location: location
@@ -63,11 +63,17 @@ module.exports = function(app) {
         });
     });
 
-    // app.get("/api/lentByUser", function(req, res) {
-    //     db.User.getLending().then(function(associatedItems) {
-    //         res.json(dbItem);
-    //     });
-    // });
+    // Get all items lent by user
+    app.get("/itemsByLender", function(req, res) {
+        db.User.getLending().then(function(associatedItems) {
+            res.json(dbItem);
+        });
+    });
+
+    // Get all items borrowed by user
+    app.get("itemsByBorrower", function(req, res) {
+
+    })
 
     // UPDATE
     // Lender update the status of an item to unavailable
