@@ -1,15 +1,11 @@
+//Model and authentication check.
 var db = require("../models");
+var isLoggedIn = require("./restrict.js");
 
 module.exports = function(app, passport) {
 
-    // Passport local strategies and session management.
+    // Passport local strategies for sign-in and sign-up.
     var LocalStrategy = require('passport-local').Strategy;
-    var session = require('express-session');
-    var isLoggedIn = require("./restrict.js");
-
-    app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-    app.use(passport.initialize());
-    app.use(passport.session());
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -40,16 +36,6 @@ module.exports = function(app, passport) {
         });
     }));
 
-    app.post('/login', passport.authenticate('local-signin', {
-        successRedirect: '/profile',
-        failureRedirect: '/'
-    }));
-
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
     passport.use('local-signup', new LocalStrategy({
         passReqToCallback: true
     }, function(req, username, password, done) {
@@ -79,13 +65,24 @@ module.exports = function(app, passport) {
         });
     }));
 
+    app.post('/login', passport.authenticate('local-signin', {
+        successRedirect: '/profile',
+        failureRedirect: '/'
+    }));
+
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/profile',
         failureRedirect: '/signup'
     }));
 
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+    // Logged-in user details
     app.get('/api/profile', isLoggedIn, function(req, res, next) {
-        var userDataId = req.user.dataValues.id;
+        var userDataId = req.user.id;
         db.User.findAll({
             where: {
                 id: userDataId
@@ -95,16 +92,33 @@ module.exports = function(app, passport) {
         });
     });
 
-    // Logged-in user lend items
+    // Logged-in user lend items.
     app.get("/api/lend", isLoggedIn, function(req, res) {
-        var userDataId = req.user.dataValues.id;
+        var userDataId = req.user.id;
         db.Item.findAll({
             where: {
-                UserId: userDataId
+                lender_id: userDataId
             },
-            include: [db.User]
+            include: [{
+                model: db.User,
+                as: 'Lender'
+            }]
         }).then(function(dbGet) {
             res.json(dbGet);
+        });
+    });
+
+    // Logged-in user can update their personal info
+    app.put("/api/update-user", isLoggedIn, function(req, res) {
+        var userDataId = req.user.id;
+        db.User.update({
+            fullName: req.body.updateFullName,
+            email: req.body.updateEmailId,
+            location: req.body.updateLocation
+        }, {
+            where: { id: userDataId }
+        }).then(function(dbPut) {
+            res.json(dbPut);
         });
     });
 };

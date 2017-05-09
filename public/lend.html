@@ -45,16 +45,31 @@
                         </ul>
                     </div>
                 </div>
+</div>
 
 
+            <div class="row">
+                    <div class="col-md-10 text-center">
+                            <p>Items you are offering to lend</p>
 
-                <div class="row text-center file-upload-section">
+
+                        <div class="container Lend-display">
+                            <div id="items"> </div>
+                            <p id="item-name"> </p>
+                            <p id="item-desc"> </p>
+                            <p id="category"> </p>
+                            <p id="img"> </p>
+                            <p id="avail"> </p>
+                    </div>
+                </div>
+            </div>
+
+                <!-- <div class="row text-center file-upload-section">
 
 
                     <div class="col-sm-12 col-md-6 col-lg-4 col-lg-offset-1">
 
-                        <!-- <div class="col-md-10">
- -->
+ 
                         <br>
                         <table style="width:100%">
                             <tr>
@@ -73,13 +88,59 @@
                         </table>
 
                     </div>
-                </div>
-                <div class="row">
+                </div> -->
+                <!-- <div class="row">
                     <div class="col-md-7">
                         <br><br>
-                        <a class="btn btn-danger" href="add.html" role="button">Add an item to lend</a>
+                        <a class="btn btn-danger edit" href="add.html" role="button">Add an item to lend</a>
                     </div>
-                </div>
+                </div> -->
+
+<div class="row">
+     <div class="col-md-4"></div>
+     <div class="col-md-4 text-center">
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger add">Add an item to lend</button>
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+      <label class="add-text"><b>Item Name</b></label>
+      <input class="add-input" type="text" placeholder="Enter Item Name" name="item-name" required>
+
+      <label class="add-text"><b>Item Description</b></label>
+      <input class="add-input" type="text" placeholder="Enter a description for your item" name="description" required>
+
+      <label class="add-text"><b>Image URL</b></label>
+      <input class="add-input" type="text" placeholder="Enter URL for image" name="item-image">
+<br>      
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Category
+    <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu category" aria-labelledby="by-category">
+                <li class="category1"><a href="#">Home Goods</a></li>
+                <li class="category2"><a href="#">Academic</a></li>
+                <li class="category3"><a href="#">Jewelery</a></li>
+                <li role="separator" class="divider"></li>
+            </ul>
+        </div>
+<br>
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="addButton">Add Item</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</div>
+</div>
+
+
+
             </div>
         </div>
     </div>

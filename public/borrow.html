@@ -73,18 +73,91 @@
                     </div>
                 </div>
 
+
+
+
+
+
+
+
+
+                <div class="row">
+                    <div class="container render-list">
+                        <p> Select items to borrow </p>
+
+                        <div class="col-md-4">
+
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    By Category
+    <span class="caret"></span>
+  </button>
+                                <ul class="dropdown-menu category" aria-labelledby="by-category">
+                                    <li class="category1"><a href="#">Home Goods</a></li>
+                                    <li class="category2"><a href="#">Academic</a></li>
+                                    <li class="category3"><a href="#">Jewelery</a></li>
+                                    <li role="separator" class="divider"></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="by-location" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    By Location
+    <span class="caret"></span>
+  </button>
+                                <ul class="dropdown-menu location" aria-labelledby="by-location">
+                                    <li class="location1"><a href="#">Escondido</a></li>
+                                    <li class="location2"><a href="#">San Diego</a></li>
+                                    <li class="location3"><a href="#">San Jose</a></li>
+                                    <!-- <li><a href="#">Del Mar</a></li>
+                                    <li><a href="#">Scripps Ranch</a></li> -->
+                                    <li role="separator" class="divider"></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!--  -->
+                        <!-- class="caret" -->
+
+                        <div class="col-md-4">
+
+
+                            <button class="btn btn-default all" type="button" aria-haspopup="true" aria-expanded="true">See All available items</button>
+
+                        </div>
+
+                        <div class="container info-display">
+                            <div id="items" class="borrow-info"> </div>
+                            <p id="item-name" class="borrow-info"> </p>
+                            <p id="item-desc" class="borrow-info"> </p>
+                            <p id="category" class="borrow-info"> </p>
+                            <p id="img" class="borrow-info"> </p>
+                            <p id="avail" class="borrow-info"> </p>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    <br><br><br>
+        <br><br><br>
 
 
-    <footer class="text-left" id="footerFontSize">
-        <p>Copyright &copy; 2017 REMY Inc.</p>
+        <footer class="text-left" id="footerFontSize">
+            <p>Copyright &copy; 2017 REMY Inc.</p>
 
-    </footer>
+        </footer>
 
+        <script type="text/javascript" src="js/borrow.js">
+        </script>
 
 
 
