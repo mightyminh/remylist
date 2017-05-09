@@ -65,13 +65,14 @@ module.exports = function(app) {
 
     // Get all items lent by user
     app.get("/itemsByLender", function(req, res) {
+        var userDataId = req.user.id;
         db.Item.findAll({
             where: {
                 lender_id: userDataId
             }
         }).then(function(dbItem) {
             res.json(dbItem);
-            res.render("");
+            res.render("lend");
         });
     });
 
