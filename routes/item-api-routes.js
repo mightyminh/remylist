@@ -83,7 +83,6 @@ module.exports = function(app) {
             var itemsObject = {
                 items: dbItem
             };
-            res.json(dbItem);
             res.render("lend", itemsObject);
         });
     });
