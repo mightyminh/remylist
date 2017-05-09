@@ -99,20 +99,22 @@ module.exports = function(app, passport) {
         });
     });
 
-    // Logged-in user details
-    // app.get('/api/profile', isLoggedIn, function(req, res, next) {
-    //     var userDataId = req.user.id;
-    //     db.User.findAll({
-    //         where: {
-    //             id: userDataId
-    //         }
-    //     }).then(function(dbGet) {
-    //         res.json(dbGet);
-    //     });
-    // });
+    // Logged-in user can update their personal info
+    app.put("/update-user", isLoggedIn, function(req, res) {
+        var userDataId = req.user.id;
+        db.User.update({
+            fullName: req.body.updateFullName,
+            email: req.body.updateEmailId,
+            location: req.body.updateLocation
+        }, {
+            where: { id: userDataId }
+        }).then(function(dbPut) {
+            res.json(dbPut);
+        });
+    });
 
     // Logged-in user lend items.
-    app.get("/api/lend", isLoggedIn, function(req, res) {
+    app.get("/lend-items", isLoggedIn, function(req, res) {
         var userDataId = req.user.id;
         db.Item.findAll({
             where: {
@@ -124,20 +126,6 @@ module.exports = function(app, passport) {
             }]
         }).then(function(dbGet) {
             res.json(dbGet);
-        });
-    });
-
-    // Logged-in user can update their personal info
-    app.put("/api/update-user", isLoggedIn, function(req, res) {
-        var userDataId = req.user.id;
-        db.User.update({
-            fullName: req.body.updateFullName,
-            email: req.body.updateEmailId,
-            location: req.body.updateLocation
-        }, {
-            where: { id: userDataId }
-        }).then(function(dbPut) {
-            res.json(dbPut);
         });
     });
 };
