@@ -112,20 +112,4 @@ module.exports = function(app, passport) {
             res.json(dbPut);
         });
     });
-
-    // Logged-in user lend items.
-    app.get("/lend-items", isLoggedIn, function(req, res) {
-        var userDataId = req.user.id;
-        db.Item.findAll({
-            where: {
-                lender_id: userDataId
-            },
-            include: [{
-                model: db.User,
-                as: 'Lender'
-            }]
-        }).then(function(dbGet) {
-            res.json(dbGet);
-        });
-    });
 };
