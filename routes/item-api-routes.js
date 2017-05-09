@@ -2,7 +2,7 @@ var db = require("../models");
 
 var itemId = 1;
 var userDataId = 1;
-var itemCat = "Homegoods";
+var itemCat = "jewelery";
 var location = "san diego"
 
 // Routes
