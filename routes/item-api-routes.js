@@ -48,7 +48,10 @@ module.exports = function(app) {
             where: {
                 location: location
             },
-            include: [db.Item]
+            include: [{
+                model: db.Item,
+                as: "Lending"
+            }]
         }).then(function(dbItem) {
             res.json(dbItem);
         });
@@ -105,13 +108,14 @@ module.exports = function(app) {
 
     // DELETE
     // Lender can delete an item from the database
-    app.delete("/api/delete", function(req, res) {
+    app.delete("/deleteItem", function(req, res) {
         db.Item.destroy({
             where: {
                 id: itemId
             }
         }).then(function(dbPost) {
             res.json(dbPost);
+            res.render("lend");
         });
     });
 };
