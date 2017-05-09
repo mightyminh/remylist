@@ -12,7 +12,7 @@ $(document).ready(function() {
     function updateDB(userInput) {
         $.ajax({
             method: "PUT",
-            url: "/updateuser",
+            url: "/update-user",
             data: userInput
         }).done(function() {
             window.location.href = "/profile";
