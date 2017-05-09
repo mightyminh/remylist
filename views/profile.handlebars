@@ -28,12 +28,28 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="container info-display">
-                        <p id="full-name"> {{data.fullName}}</p>
-                        <p id="user-name"> {{data.userName}} </p>
-                        <p id="email"> {{data.email}} </p>
-                        <p id="location"> {{data.location}} </p>
-                    </div>
+                    {{#each data}}
+                    <table class="table personal-info">
+                        <tr>
+                            <td>Full name</td>
+                            <td>{{this.fullName}}</td>
+                        </tr>
+                        <tr>
+                            <td>User name</td>
+                            <td>{{this.userName}} </td>
+                        </tr>
+                        <tr>
+                            <td>E-mail</td>
+                            <td>{{this.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{this.location}}</td>
+                        </tr>
+                    </table>
+                    {{else}}
+                    <p>Record not available</p>
+                    {{/each}}
                 </div>
             </div>
             <div class="row">
@@ -42,14 +58,15 @@
                     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger" id="edit-info"> Edit your information </button>
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                        <form class="modal-content animate "id="update-user-info-form">
+                        <form class="modal-content animate " id="update-user-info-form">
                             <div class="container">
                                 <label class="add-text"><b>Full Name</b></label>
-                                <input class="add-input" id="update-full-name" type="text" placeholder="Edit your Full Name" value="{{data.fullName}}" name="fullName" required>
+                                <input class="add-input" id="update-full-name" type="text" placeholder="Edit your Full Name" value="{{data.fullName}}" name="fullName"
+                                    required>
                                 <label class="add-text"><b>Email</b></label>
                                 <input class="add-input" id="update-email-id" type="text" placeholder="Enter new email" value="{{data.email}}" name="email">
                                 <label class="add-text"><b>Location</b></label>
-                                <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" value="{{data.location}}"name="location">
+                                <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" value="{{data.location}}" name="location">
                                 <div class="clearfix">
                                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                                     <button type="submit" class="addButton" id="update-user">Submit New Info</button>
