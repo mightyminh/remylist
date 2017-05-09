@@ -102,7 +102,7 @@ module.exports = function(app, passport) {
             }
         }).then(function(dbGet) {
             var userObject = {
-                data: dbGet[0].dataValues
+                data: dbGet
             };
             res.render("profile", userObject);
         });
