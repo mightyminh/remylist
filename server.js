@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 var passport = require('passport');
 var session = require('express-session');
 var exphbs = require("express-handlebars");
+var flash = require('connect-flash');
 
 // Sets up the Express App
 var app = express();
@@ -22,6 +23,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
 app.use(express.static("./public"));
+
+//For flash messages
+app.use(flash());
 
 // Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

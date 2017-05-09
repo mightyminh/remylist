@@ -27,9 +27,9 @@ module.exports = function(app, passport) {
             where: { userName: username }
         }).then(function(user) {
             if (!user) {
-                return done(null, false);
+                return done(null, false, req.flash('userMessage', 'Incorrect username'));
             } else if (password != user.password) {
-                return done(null, false);
+                return done(null, false, req.flash('userMessage', 'Incorrect password'));
             } else {
                 return done(null, user);
             }
@@ -53,26 +53,29 @@ module.exports = function(app, passport) {
                     location: req.body.locations
                 }).then(function(newUser) {
                     if (!newUser) {
-                        return done(null, false);
+                        return done(null, false, req.flash('newUserMessage', 'Sign-up error'));
                     } else {
                         return done(null, newUser);
                     }
                 });
             } else {
-                console.log("user exist");
-                return done(null, false);
+                return done(null, false, req.flash('newUserMessage', 'Username already exist'));
             }
         });
     }));
 
+    // User signing in
     app.post('/login', passport.authenticate('local-signin', {
         successRedirect: '/profile',
-        failureRedirect: '/'
+        failureRedirect: '/',
+        failureFlash: true
     }));
 
+    // New user signup
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/profile',
-        failureRedirect: '/signup'
+        failureRedirect: '/signup',
+        failureFlash: true
     }));
 
     app.get('/logout', function(req, res) {
@@ -80,8 +83,14 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
+    // Login page
     app.get("/", function(req, res) {
-        res.render("home");
+        res.render("home", { loginMessage: req.flash('userMessage') });
+    });
+
+    //Sign-up page
+    app.get("/signup", function(req, res) {
+        res.render("signup", { signupMessage: req.flash('newUserMessage') });
     });
 
     // Logged-in user personal info
@@ -92,7 +101,6 @@ module.exports = function(app, passport) {
                 id: userDataId
             }
         }).then(function(dbGet) {
-            console.log(dbGet[0].dataValues);
             var userObject = {
                 data: dbGet[0].dataValues
             };
@@ -109,8 +117,6 @@ module.exports = function(app, passport) {
             location: req.body.updateLocation
         }, {
             where: { id: userDataId }
-        }).then(function(dbPut) {
-            res.json(dbPut);
         });
     });
 };
