@@ -65,15 +65,26 @@ module.exports = function(app) {
 
     // Get all items lent by user
     app.get("/itemsByLender", function(req, res) {
-        db.User.getLending().then(function(associatedItems) {
+        db.Item.findAll({
+            where: {
+                lender_id: userDataId
+            }
+        }).then(function(dbItem) {
             res.json(dbItem);
+            // res.render("");
         });
     });
 
     // Get all items borrowed by user
     app.get("itemsByBorrower", function(req, res) {
-
-    })
+        db.Item.findAll({
+            where: {
+                borrower_id: 2
+            }
+        }).then(function(dbItem) {
+            res.json(dbItem);
+        });
+    });
 
     // UPDATE
     // Lender update the status of an item to unavailable
