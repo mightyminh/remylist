@@ -84,6 +84,7 @@ module.exports = function(app, passport) {
         res.render("home");
     });
 
+    // Logged-in user personal info
     app.get("/profile", isLoggedIn, function(req, res) {
         var userDataId = req.user.id;
         db.User.findAll({
@@ -110,22 +111,6 @@ module.exports = function(app, passport) {
             where: { id: userDataId }
         }).then(function(dbPut) {
             res.json(dbPut);
-        });
-    });
-
-    // Logged-in user lend items.
-    app.get("/lend-items", isLoggedIn, function(req, res) {
-        var userDataId = req.user.id;
-        db.Item.findAll({
-            where: {
-                lender_id: userDataId
-            },
-            include: [{
-                model: db.User,
-                as: 'Lender'
-            }]
-        }).then(function(dbGet) {
-            res.json(dbGet);
         });
     });
 };
