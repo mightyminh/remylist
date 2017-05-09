@@ -45,8 +45,11 @@ module.exports = function(app) {
                 category: itemCat
             }
         }).then(function(dbItem) {
+            var itemsObject = {
+                items: dbItem
+            };
             res.json(dbItem);
-            res.render("");
+            res.render("", itemsObject);
         });
     });
 
@@ -61,8 +64,11 @@ module.exports = function(app) {
                 as: "Lending"
             }]
         }).then(function(dbItem) {
+            var itemsObject = {
+                items: dbItem
+            };
             res.json(dbItem);
-            res.render("");
+            res.render("", itemsObject);
         });
     });
 
@@ -74,8 +80,11 @@ module.exports = function(app) {
                 lender_id: userDataId
             }
         }).then(function(dbItem) {
+            var itemsObject = {
+                items: dbItem
+            };
             res.json(dbItem);
-            res.render("lend", dbItem);
+            res.render("lend", itemsObject);
         });
     });
 
@@ -87,8 +96,11 @@ module.exports = function(app) {
                 borrower_id: userDataId
             }
         }).then(function(dbItem) {
+            var itemsObject = {
+                items: dbItem
+            };
             res.json(dbItem);
-            res.render("borrow");
+            res.render("borrow", itemsObject);
         });
     });
 
