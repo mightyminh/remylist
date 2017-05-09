@@ -9,13 +9,27 @@
                         <h3 class="panel-title text-center">SignUp</h3>
                     </div>
                     <div class="panel-body">
+                        <small id="signup-message" class="form-text text-muted">{{signupMessage}}</small>
                         <form method="post" action="/signup">
-                            <input type="text" name="username" placeholder="Username"> <br>
-                            <input type="password" name="password" placeholder="Password"> <br>
-                            <input type="text" name="fullname" placeholder="Full name"> <br>
-                            <input type="text" name="email" placeholder="email"> <br>
-                            <input type="text" name="locations" placeholder="Location"> <br>
-                            <button>Sign Up</button>
+                            <div class="form-group">
+                                <input type="text" name="username" placeholder="Username" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id= "newuser-password" name="password" placeholder="Password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id= "repeat-password" placeholder="Re-enter password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="fullname" placeholder="Full name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="E-mail id" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="locations" placeholder="Location" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
                         </form>
                     </div>
                 </div>
