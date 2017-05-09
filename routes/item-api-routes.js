@@ -1,4 +1,5 @@
 var db = require("../models");
+var isLoggedIn = require("./restrict.js");
 
 var itemId = 1;
 var userDataId = 1;
@@ -11,7 +12,7 @@ module.exports = function(app) {
 
     // CREATE
     // Signed-in user can add a new item to lend
-    app.post("/api/lend", function(req, res) {
+    app.post("/lend", function(req, res) {
         db.Item.create({
             name: "sewing machine",
             category: "Homegoods",
@@ -20,30 +21,34 @@ module.exports = function(app) {
             UserId: 1
         }).then(function(dbItem) {
             res.json(dbItem);
+            res.render("");
         });
     });
 
     // RETRIEVE 
     // Select all items in database
-    app.get("/api/allItems", function(req, res) {
-        db.Item.findAll({}).then(function(dbItem) {
-            res.json(dbItem);
-        });
+    app.get("/allItems", function(req, res) {
+        db.Item.findAll({})
+            .then(function(dbItem) {
+                res.json(dbItem);
+                res.render("");
+            });
     });
 
     // Select all items from chosen category
-    app.get("/api/itemsCategory", function(req, res) {
+    app.get("/itemsCategory", function(req, res) {
         db.Item.findAll({
             where: {
                 category: itemCat
             }
         }).then(function(dbItem) {
             res.json(dbItem);
+            res.render("");
         });
     });
 
     // Select all items from a chosen location
-    app.get("/api/itemsLocation", function(req, res) {
+    app.get("/itemsLocation", function(req, res) {
         db.User.findAll({
             where: {
                 location: location
@@ -54,6 +59,7 @@ module.exports = function(app) {
             }]
         }).then(function(dbItem) {
             res.json(dbItem);
+            res.render("");
         });
     });
 
@@ -65,7 +71,7 @@ module.exports = function(app) {
 
     // UPDATE
     // Lender update the status of an item to unavailable
-    app.put("/api/itemUnavailable", function(req, res) {
+    app.put("/itemUnavailable", function(req, res) {
         db.Item.update({
             available: false
         }, {
@@ -74,11 +80,12 @@ module.exports = function(app) {
             }
         }).then(function(dbPost) {
             res.json(dbPost);
+            res.render("lend-items");
         });
     });
 
     // Lender update the status of an item to available 
-    app.put("/api/itemAvailable", function(req, res) {
+    app.put("/itemAvailable", function(req, res) {
         db.Item.update({
             available: true
         }, {
@@ -87,11 +94,12 @@ module.exports = function(app) {
             }
         }).then(function(dbPost) {
             res.json(dbPost);
+            res.render("lend-items");
         });
     });
 
     // Lender update the information from an item already posted
-    app.put("/api/updateItem", function(req, res) {
+    app.put("/updateItem", function(req, res) {
         db.Item.update({
             name: "Sewing Machine",
             category: "Homegoods",
@@ -103,6 +111,7 @@ module.exports = function(app) {
             }
         }).then(function(dbPost) {
             res.json(dbPost);
+            res.render("lend-items");
         });
     });
 
