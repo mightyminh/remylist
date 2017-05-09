@@ -26,5 +26,8 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "jquery": "^1.12.4"
   }
 }
