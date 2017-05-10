@@ -78,7 +78,11 @@ module.exports = function(app) {
         db.Item.findAll({
             where: {
                 lender_id: userDataId
-            }
+            },
+            include: [{
+                model: db.User,
+                as: "Borrower"
+            }]
         }).then(function(dbItem) {
             var itemsObject = {
                 items: dbItem
