@@ -1,108 +1,56 @@
-<div class="container ">
-    <div class="bs-example">
+<div class="container">
+    <div class="row">
         <ul class="nav nav-tabs">
-            <li><a href="home.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-            <li class="active"><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li><a href="profile.html"><span class="glyphicon glyphicon-envelope"></span> Requests</a></li>
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li class="active"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All items</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
-    <div class="jumbotron bg">
+    <div class="row">
         <h1 class="text-center">Remy's List</h1>
-        <h4> </h4>
         <p class="text-center">The Neighborhood Hub</p>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-7">
-                <div class="bs-example">
-                    <ul class="nav nav-tabs">
-
-                        <li><a href="profile.html"><span class="glyphicon"></span> Personal Info</a></li>
-                        <li class="active"><a href="lend.html"><span class="glyphicon"></span> Lend</a></li>
-                        <li><a href="borrow.html"><span class="glyphicon"></span> Borrow</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-10 text-center">
-                <p>Items you are offering to lend</p>
-                <table class="table lending-info">
-                    <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Image url</th>
-                        <th>Status</th>
-                        <th>Borrower</th>
-                        <th></th>
-                    </tr>
-                    {{#each items}}
-                    <tr>
-                        <td>{{this.name}} </td>
-                        <td>{{this.category}} </td>
-                        <td>{{this.description}} </td>
-                        <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
-                {{#if this.available}}
-            <td>Available <button type="button" class="btn btn-danger btn-xs" id="make-unavailable" available-item-id="{{this.id}}">Change</button> </td>
-        {{else}}
-        <td>Unavailable <button type="button" class="btn btn-success btn-xs" id="make-available" unavailable-item-id="{{this.id}}">Change</button> </td>
-        {{/if}}
-        <td>{{this.Borrower.fullName}} </td>
-        <td><button type="button" class="btn btn-primary btn-xs" id="edit-item" edit-item-id="{{this.id}}">Edit</button></td>       
-    </tr>
-    {{else}}
-    <p>Record not available</p>
-    {{/each}}
-</table>
-
-                   
-                </div>
-            </div>
-
-            
-                <div class="row">
-                   <div class="col-md-4"></div>
-                   <div class="col-md-4 text-center">
-                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger add">Add an item to lend</button>
-
-                    <div id="id01" class="modal">
-                      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                      
-                      <form class="modal-content animate" action="/action_page.php">
-                        <div class="container">
-                          <label class="add-text"><b>Item Name</b></label>
-                          <input class="add-input" type="text" placeholder="Enter Item Name" name="item-name" required>
-
-                          <label class="add-text"><b>Item Description</b></label>
-                          <input class="add-input" type="text" placeholder="Enter a description for your item" name="description" required>
-
-                          <label class="add-text"><b>Image URL</b></label>
-                          <input class="add-input" type="text" placeholder="Enter URL for image" name="item-image">
-                          <br>      
-                          <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Category
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu category" aria-labelledby="by-category">
-                                <li class="category1"><a href="#">Home Goods</a></li>
-                            <li class="category2"><a href="#">Academic</a></li>
-                            <li class="category3"><a href="#">Jewelery</a></li>
-                            <li role="separator" class="divider"></li>
-                            </ul>
-            </div>
-            <br>
-            <div class="clearfix">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" class="addButton">Add Item</button>
-            </div>
-        </div>
-        </form>
     </div>
-
-</div>
-</div>
-</div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <ul class="nav nav-tabs">
+                <li><a href="/profile"><span class="glyphicon"></span> Personal Info</a></li>
+                <li  class="active"><a href="/items-by-lender"><span class="glyphicon"></span> Lending</a></li>
+                <li><a href="/items-by-borrower"><span class="glyphicon"></span> Borrowed</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <p class="text-center">Items you are offering to lend</p>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Image url</th>
+                    <th>Status</th>
+                    <th>Borrower</th>
+                    <th></th>
+                </tr>
+                {{#each items}}
+                <tr>
+                    <td>{{this.name}} </td>
+                    <td>{{this.category}} </td>
+                    <td>{{this.description}} </td>
+                    <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
+                    {{#if this.available}}
+                        <td>Available <button type="button" class="btn btn-danger btn-xs" id="make-unavailable" available-item-id="{{this.id}}">Change</button> </td>
+                    {{else}}
+                        <td>Unavailable <button type="button" class="btn btn-success btn-xs" id="make-available" unavailable-item-id="{{this.id}}">Change</button> </td>
+                    {{/if}}
+                    <td>{{this.Borrower.fullName}} </td>
+                    <td><button type="button" class="btn btn-primary btn-xs" id="edit-item" edit-item-id="{{this.id}}">Edit</button></td>       
+                </tr>
+                {{else}}
+                    <p>Record not available</p>
+                {{/each}}
+            </table>
+        </div>
+    </div>       
 </div>
