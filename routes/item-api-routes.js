@@ -28,14 +28,26 @@ module.exports = function(app) {
     // RETRIEVE 
     // Select all items in database
     app.get("/all-items", function(req, res) {
-        db.Item.findAll({})
-            .then(function(dbItem) {
-                var itemsObject = {
-                    items: dbItem
-                };
-                res.json(dbItem);
-                res.render("borrow", itemsObject);
-            });
+        var userDataId = null;
+        var loggedInUser = false;
+        if (req.user) {
+            userDataId = req.user.id;
+            loggedInUser = true;
+        }
+
+        db.Item.findAll({
+            include: [{
+                model: db.User,
+                as: "Lender"
+            }]
+        }).then(function(dbItem) {
+            var itemsObject = {
+                items: dbItem,
+                userLoggedIn: loggedInUser,
+                reqUserId: userDataId
+            };
+            res.render("allItems", itemsObject);
+        });
     });
 
     // Select all items from chosen category
