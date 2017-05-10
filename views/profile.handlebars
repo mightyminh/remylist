@@ -1,76 +1,75 @@
-<div class="container text-center">
-    <div class="">
+<div class="container">
+    <div class="row">
         <ul class="nav nav-tabs">
-            <li><a href="home.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-            <li class="active"><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li><a href="profile.html"><span class="glyphicon glyphicon-envelope"></span> Requests</a></li>
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li class="active"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
         </ul>
     </div>
-    <div class="jumbotron bg">
+    <div class="row">
         <h1 class="text-center">Remy's List</h1>
-        <h4> </h4>
         <p class="text-center">The Neighborhood Hub</p>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-7">
-                <div class="bs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="profile.html"><span class="glyphicon"></span> Personal Info</a></li>
-                        <li><a href="lend.html"><span class="glyphicon"></span> Lend</a></li>
-                        <li><a href="borrow.html"><span class="glyphicon"></span> Borrow</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    {{#each data}}
-                    <table class="table personal-info">
-                        <tr>
-                            <td>Full name</td>
-                            <td>{{this.fullName}}</td>
-                        </tr>
-                        <tr>
-                            <td>User name</td>
-                            <td>{{this.userName}} </td>
-                        </tr>
-                        <tr>
-                            <td>E-mail</td>
-                            <td>{{this.email}}</td>
-                        </tr>
-                        <tr>
-                            <td>Location</td>
-                            <td>{{this.location}}</td>
-                        </tr>
-                    </table>
-                    {{else}}
-                    <p>Record not available</p>
-                    {{/each}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4 text-center">
-                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger" id="edit-info"> Edit your information </button>
-                    <div id="id01" class="modal">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-                        <form class="modal-content animate " id="update-user-info-form">
-                            <div class="container">
-                                <label class="add-text"><b>Full Name</b></label>
-                                <input class="add-input" id="update-full-name" type="text" placeholder="Edit your Full Name" value="{{data.fullName}}" name="fullName"
-                                    required>
-                                <label class="add-text"><b>Email</b></label>
-                                <input class="add-input" id="update-email-id" type="text" placeholder="Enter new email" value="{{data.email}}" name="email">
-                                <label class="add-text"><b>Location</b></label>
-                                <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" value="{{data.location}}" name="location">
-                                <div class="clearfix">
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                    <button type="submit" class="addButton" id="update-user">Submit New Info</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="/profile"><span class="glyphicon"></span> Personal Info</a></li>
+                <li><a href="/items-by-lender"><span class="glyphicon"></span> Lend</a></li>
+                <li><a href="/items-by-borrower"><span class="glyphicon"></span> Borrow</a></li>
+            </ul>
         </div>
     </div>
+    <div class="row">
+        <p></p>
+        <div class="col-md-6 col-md-offset-3">
+            {{#each data}}
+            <table class="table personal-info">
+                <tr>
+                    <td>Full name</td>
+                    <td>{{this.fullName}}</td>
+                </tr>
+                <tr>
+                    <td>User name</td>
+                    <td>{{this.userName}} </td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td>{{this.email}}</td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>{{this.location}}</td>
+                </tr>
+            </table>
+            {{else}}
+            <p>Record not available</p>
+            {{/each}}
+        </div>
+    </div>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger" id="edit-info"> Edit your information </button>
+</div>
+
+<div class="modal fade">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> {{#each
+    data}}
+    <form class="modal body" id="update-user-info-form">
+        <div class="form-group">
+            <label class="add-text"><b>Full Name</b></label>
+            <input class="add-input" id="update-full-name" type="text" placeholder="Edit your Full Name" value="{{this.fullName}}" name="fullName"
+                required>
+        </div>
+        <div class="form-group">
+            <label class="add-text"><b>Email</b></label>
+            <input class="add-input" id="update-email-id" type="text" placeholder="Enter new email" value="{{this.email}}" name="email">
+        </div>
+        <div class="form-group">
+            <label class="add-text"><b>Location</b></label>
+            <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" value="{{this.location}}" name="location">
+        </div>
+        <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="addButton" id="update-user">Submit New Info</button>
+        </div>
+    </form>
+    {{/each}}
 </div>
