@@ -107,18 +107,16 @@ module.exports = function(app) {
         });
     });
 
-    // UPDATE
     // Lender update the status of an item to unavailable
     app.put("/item-unavailable", function(req, res) {
         db.Item.update({
             available: false
         }, {
             where: {
-                id: itemId
+                id: req.body.itemId
             }
         }).then(function(dbPost) {
-            res.json(dbPost);
-            res.render("lend-items");
+            res.render("lend");
         });
     });
 
@@ -128,11 +126,10 @@ module.exports = function(app) {
             available: true
         }, {
             where: {
-                id: itemId
+                id: req.body.itemId
             }
         }).then(function(dbPost) {
-            res.json(dbPost);
-            res.render("lend-items");
+            res.render("lend");
         });
     });
 
