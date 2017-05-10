@@ -18,6 +18,32 @@ $(document).ready(function() {
             window.location.href = "/profile";
         });
     }
+
+    $("#make-unavailable").on("click", function() {
+        var itemUnavailable = {
+            itemId: $(this).attr("available-item-id")
+        };
+        $.ajax({
+            method: "PUT",
+            url: "/item-unavailable",
+            data: itemUnavailable
+        }).done(function() {
+            window.location.href = "/items-by-lender";
+        });
+    });
+
+    $("#make-available").on("click", function() {
+        var itemAvailable = {
+            itemId: $(this).attr("unavailable-item-id")
+        };
+        $.ajax({
+            method: "PUT",
+            url: "/item-available",
+            data: itemAvailable
+        }).done(function() {
+            window.location.href = "/items-by-lender";
+        });
+    });
 });
 
 // function getUserDetails() {

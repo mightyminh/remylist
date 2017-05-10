@@ -36,6 +36,7 @@
                         <th>Image url</th>
                         <th>Status</th>
                         <th>Borrower</th>
+                        <th></th>
                     </tr>
                     {{#each items}}
                     <tr>
@@ -43,17 +44,18 @@
                         <td>{{this.category}} </td>
                         <td>{{this.description}} </td>
                         <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
-                        {{#if this.available}}
-                        <td> <button type="button" class="btn btn-danger btn-xs">Make unavailable</button> </td>
-                        {{else}}
-                        <td> <button type="button" class="btn btn-success btn-xs">Make available</button> </td>
-                        {{/if}}
-                        <td>{{this.borrower_id}} </td>      
-                    </tr>
-                    {{else}}
-                    <p>Record not available</p>
-                    {{/each}}
-                </table>
+                {{#if this.available}}
+            <td>Available <button type="button" class="btn btn-danger btn-xs" id="make-unavailable" available-item-id="{{this.id}}">Change</button> </td>
+        {{else}}
+        <td>Unavailable <button type="button" class="btn btn-success btn-xs" id="make-available" unavailable-item-id="{{this.id}}">Change</button> </td>
+        {{/if}}
+        <td>{{this.Borrower.fullName}} </td>
+        <td><button type="button" class="btn btn-primary btn-xs" id="edit-item" edit-item-id="{{this.id}}">Edit</button></td>       
+    </tr>
+    {{else}}
+    <p>Record not available</p>
+    {{/each}}
+</table>
 
                    
                 </div>
