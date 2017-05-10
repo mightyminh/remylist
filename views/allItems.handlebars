@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li class="active"><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All items</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <h1 class="text-center">Remy's List</h1>
+        <p class="text-center">The Neighborhood Hub</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <p>{{reqUserId}}</p>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Image link</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                {{#each items}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.category}} </td>
+                    <td>{{this.description}} </td>
+                    <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
+                    <td>{{this.Lender.location}} </td>
+                    {{#if this.available}}
+                        <td>Available</td>
+                        {{!--<td> <button type="button" class="btn btn-success btn-xs" id="request-item" request-item-id="{{this.id}}">Request</button> </td>--}}
+                        <td><a href="/"><button type="button" class="btn btn-primary btn-xs"> Login to borrow</button></a></td>
+                    {{else}}
+                    <td>Unavailable</td>
+                    <td></td>
+                    {{/if}}
+                </tr>
+                {{else}}
+                <p>Record not available</p>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</div>
