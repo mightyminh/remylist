@@ -1,4 +1,4 @@
-.jumbotron {
+.home-banner {
     margin-bottom: 0px;
     background-image: url(../img/jumbotron.png);
     background-size: cover;
@@ -8,6 +8,10 @@
 
 .h1 {
     color: white text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.home-login {
+    padding-top: 20px;
 }
 
 
