@@ -119,6 +119,7 @@ module.exports = function(app) {
         });
     });
 
+    // UPDATE
     // Lender update the status of an item to unavailable
     app.put("/item-unavailable", function(req, res) {
         db.Item.update({
@@ -127,7 +128,7 @@ module.exports = function(app) {
             where: {
                 id: req.body.itemId
             }
-        }).then(function(dbPost) {
+        }).then(function(dbItem) {
             res.render("lend");
         });
     });
@@ -140,8 +141,20 @@ module.exports = function(app) {
             where: {
                 id: req.body.itemId
             }
-        }).then(function(dbPost) {
+        }).then(function(dbItem) {
             res.render("lend");
+        });
+    });
+
+    app.put("/set-borrower", function(req, res) {
+        db.Item.update({
+            borrower_id: req.user.id
+        }, {
+            where: {
+                id: req.body.itemId
+            }
+        }).then(function(dbItem) {
+            res.render("all-item");
         });
     });
 
