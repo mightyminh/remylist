@@ -9,10 +9,10 @@ body {
     background-image: url(../img/jumbotron.png);
     background-size: cover;
     background-repeat: no-repeat;
-    color: black;
+    color: white;
 }
 
-.h1 {
+h1 {
     color: white;
     text-shadow: black 0.1em 0.1em 0.2em;
 }
