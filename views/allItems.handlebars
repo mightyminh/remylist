@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <p>{{reqUserId}}</p>
+            {{#if userLoggedIn}}
             <table class="table">
                 <tr>
                     <th>Name</th>
@@ -42,7 +42,36 @@
                     <td>{{this.Lender.location}} </td>
                     {{#if this.available}}
                         <td>Available</td>
-                        {{!--<td> <button type="button" class="btn btn-success btn-xs" id="request-item" request-item-id="{{this.id}}">Request</button> </td>--}}
+                        <td> <button type="button" class="btn btn-success btn-xs" id="request-item" request-item-id="{{this.id}}">Request</button> </td>
+                    {{else}}
+                    <td>Unavailable</td>
+                    <td></td>
+                    {{/if}}
+                </tr>
+                {{else}}
+                <p>Record not available</p>
+                {{/each}}
+            </table>
+            {{else}}
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Image link</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                {{#each items}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.category}} </td>
+                    <td>{{this.description}} </td>
+                    <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
+                    <td>{{this.Lender.location}} </td>
+                    {{#if this.available}}
+                        <td>Available</td>
                         <td><a href="/"><button type="button" class="btn btn-primary btn-xs"> Login to borrow</button></a></td>
                     {{else}}
                     <td>Unavailable</td>
@@ -53,6 +82,7 @@
                 <p>Record not available</p>
                 {{/each}}
             </table>
+            {{/if}}
         </div>
     </div>
 </div>

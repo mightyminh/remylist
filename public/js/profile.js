@@ -61,6 +61,7 @@ $(document).ready(function() {
             window.location.href = "/items-by-lender";
         });
     });
+
     $("#delete-item").on("click", function() {
         var deleteId = {
             itemId: $("#delete-item").attr("delete-item-id")
@@ -72,6 +73,19 @@ $(document).ready(function() {
             data: deleteId
         }).done(function() {
             window.location.href = "/items-by-lender";
+        });
+    });
+
+    $("#request-item").on("click", function() {
+        var request = {
+            itemId: $("#request-item").attr("request-item-id")
+        };
+        $.ajax({
+            method: "PUT",
+            url: "/set-borrower",
+            data: request
+        }).done(function() {
+            window.location.href = "/all-items";
         });
     });
 });
