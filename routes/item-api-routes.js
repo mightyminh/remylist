@@ -82,7 +82,7 @@ module.exports = function(app) {
     });
 
     // Get all items lent by user
-    app.get("/items-by-lender", function(req, res) {
+    app.get("/items-by-lender", isLoggedIn, function(req, res) {
         var userDataId = req.user.id;
         db.Item.findAll({
             where: {
@@ -102,7 +102,7 @@ module.exports = function(app) {
     });
 
     // Get all items borrowed by user
-    app.get("/items-by-borrower", function(req, res) {
+    app.get("/items-by-borrower", isLoggedIn, function(req, res) {
         var userDataId = req.user.id;
         db.Item.findAll({
             where: {
