@@ -1,6 +1,17 @@
+'use strict';
+
 //Model and authentication check.
 var db = require("../models");
 var isLoggedIn = require("./restrict.js");
+const nodemailer = require('nodemailer');
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'remylists@gmail.com',
+        pass: 'remylists000'
+    }
+});
 
 module.exports = function(app, passport) {
 
@@ -117,6 +128,48 @@ module.exports = function(app, passport) {
             location: req.body.updateLocation
         }, {
             where: { id: userDataId }
+        });
+    });
+
+    // Request email
+    app.post('/send-mail', function(req, res) {
+        var userDataId = req.user.id;
+        db.User.findAll({
+            where: {
+                id: userDataId
+            }
+        }).then(function(dbUser) {
+            var fromMail = dbUser[0].dataValues.email;
+            if (isNaN(req.body.itemId)) {
+                console.log("Mail NOT sent");
+            } else {
+                db.Item.findAll({
+                    where: {
+                        id: parseInt(req.body.itemId)
+                    },
+                    include: [{
+                        model: db.User,
+                        as: "Lender"
+                    }]
+                }).then(function(dbLender) {
+                    var toMail = dbLender[0].dataValues.Lender.dataValues.email;
+                    var borrowSubject = "Remys list: Borrow " + dbLender[0].dataValues.name +
+                        " for " + req.body.numDays + " days";
+                    let mailOptions = {
+                        from: fromMail,
+                        to: toMail,
+                        subject: borrowSubject,
+                        text: req.body.mailMessage
+                    };
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message %s sent: %s', info.messageId, info.response);
+                    });
+                    res.render("allItems");
+                });
+            }
         });
     });
 };

@@ -76,14 +76,32 @@ $(document).ready(function() {
         });
     });
 
+    var itemRequestId;
+
     $("#request-item").on("click", function() {
         var request = {
-            itemId: $("#request-item").attr("request-item-id")
+            itemId: $(this).attr("request-item-id")
         };
+        itemRequestId = request.itemId;
         $.ajax({
             method: "PUT",
             url: "/set-borrower",
             data: request
+        }).done(function() {
+            window.location.href = "/all-items";
+        });
+    });
+
+    $("#send-mail").on("click", function() {
+        var mail = {
+            numDays: $("#num-days").val(),
+            mailMessage: $("#email-message").val(),
+            itemId: itemRequestId
+        };
+        $.ajax({
+            method: "POST",
+            url: "/send-mail",
+            data: mail
         }).done(function() {
             window.location.href = "/all-items";
         });

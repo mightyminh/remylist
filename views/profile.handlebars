@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <p class="text-center profile-heading">Your Info</p>
+            <p class="text-center profile-heading">Your Information</p>
             {{#each data}}
             <table class="table personal-info">
                 <tr>
@@ -43,7 +43,7 @@
                 </tr>
             </table>
             {{else}}
-            <p>Record not available</p>
+            <p class="text-center no-record-message">Record not available</p>
             {{/each}}
         </div>
     </div>
@@ -65,7 +65,15 @@
             </div>
             <div class="form-group">
                 <label class="add-text"><b>Location</b></label>
-                <input class="add-input" id="update-location" type="text" placeholder="Enter new Location" value="{{this.location}}" name="location">
+                <select class="form-control" id="update-location" name="location" required>
+                    <option value="{{this.location}}">{{this.location}}</option>
+                    <option value="North Coast">North Coast</option>
+                    <option value="North Inland">North Inland</option>
+                    <option value="Central Coast">Central Coast</option>
+                    <option value="Central City">Central City</option>
+                    <option value="East County">East County</option>
+                    <option value="South Bay">South Bay</option>
+                </select>
             </div>
             <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>

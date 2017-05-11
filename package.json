@@ -1,33 +1,31 @@
 {
-  "name": "remylist",
-  "version": "1.0.0",
-  "description": "Library of Things",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mightyminh/remylist.git"
-  },
-  "author": "REMY Inc.",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mightyminh/remylist/issues"
-  },
-  "homepage": "https://github.com/mightyminh/remylist#readme",
-  "dependencies": {
-    "body-parser": "^1.17.1",
-    "connect-flash": "^0.1.1",
-    "express": "^4.15.2",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.2",
-    "mysql": "^2.13.0",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "sequelize": "^3.30.4"
-  },
-  "devDependencies": {
-    "jquery": "^1.12.4"
-  }
+    "name": "remylist",
+    "version": "1.0.0",
+    "description": "Library of Things",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mightyminh/remylist.git"
+    },
+    "author": "REMY Inc.",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mightyminh/remylist/issues"
+    },
+    "homepage": "https://github.com/mightyminh/remylist#readme",
+    "dependencies": {
+        "body-parser": "^1.17.1",
+        "connect-flash": "^0.1.1",
+        "express": "^4.15.2",
+        "express-handlebars": "^3.0.0",
+        "express-session": "^1.15.2",
+        "mysql": "^2.13.0",
+        "nodemailer": "^4.0.1",
+        "passport": "^0.3.2",
+        "passport-local": "^1.0.0",
+        "sequelize": "^3.30.4"
+    }
 }

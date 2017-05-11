@@ -146,14 +146,13 @@ module.exports = function(app) {
 
     app.put("/set-borrower", function(req, res) {
         db.Item.update({
-            borrower_id: req.user.id
+            borrower_id: req.user.id,
+            available: false
         }, {
             where: {
                 id: parseInt(req.body.itemId)
             }
-        }).then(function(dbItem) {
-            res.render("all-item");
-        });
+        }).then(function(dbItem) {});
     });
 
     // Lender update the information from an item already posted

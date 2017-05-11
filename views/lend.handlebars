@@ -22,7 +22,8 @@
     </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <p class="text-center">Items you are offering to lend</p>
+            {{#if items}}
+            <p class="text-center  lend-heading">Items you are offering to lend</p>
             <table class="table">
                 <tr>
                     <th>Name</th>
@@ -47,10 +48,11 @@
                     <td>{{this.Borrower.fullName}} </td>
                     <td><button type="button" class="btn btn-warning btn-xs" id="delete-item" delete-item-id="{{this.id}}">Delete</button></td>       
                 </tr>
-                {{else}}
-                    <p>Record not available</p>
                 {{/each}}
             </table>
+            {{else}}
+                <p class="text-center no-record-message">You haven't lending anything</p>
+            {{/if}}
         </div>
     </div> 
     <div class="row text-center">

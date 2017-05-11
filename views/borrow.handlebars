@@ -21,8 +21,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <p class="text-center">Items you borrowed</p>
+        <div class="col-md-8 col-md-offset-2">  
+            {{#if items}}
+            <p class="text-center  borrow-heading">Items you borrowed</p>
             <table class="table">
                 <tr>
                     <th>Name</th>
@@ -37,10 +38,11 @@
                     <td>{{this.description}} </td>
                     <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
                 </tr>
-                {{else}}
-                    <p>You haven't borrowed anything</p>
                 {{/each}}
             </table>
+            {{else}}
+                <p class="text-center no-record-message">You haven't borrowed anything</p>
+            {{/if}}
         </div>
     </div> 
 </div>
