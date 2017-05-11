@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container background-white">
     <div class="row">
         <ul class="nav nav-tabs">
             <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -15,13 +15,13 @@
         <div class="col-md-10 col-md-offset-1">
             <ul class="nav nav-tabs">
                 <li><a href="/profile"><span class="glyphicon"></span> Personal Info</a></li>
-                <li  class="active"><a href="/items-by-lender"><span class="glyphicon"></span> Lending</a></li>
+                <li class="active"><a href="/items-by-lender"><span class="glyphicon"></span> Lending</a></li>
                 <li><a href="/items-by-borrower"><span class="glyphicon"></span> Borrowed</a></li>
             </ul>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <p class="text-center">Items you are offering to lend</p>
             <table class="table">
                 <tr>
@@ -52,5 +52,38 @@
                 {{/each}}
             </table>
         </div>
+    </div> 
+    <div class="row text-center">
+        <button type="button" class="btn btn-success btn-xs" onclick="document.getElementById('id01').style.display='block'">Add new item</button>
+    </div>
+    <div id="id01" class="modal-box">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> 
+        <form class="modal-content">
+            <p class="text-center add-item-form-title">Add new Item</p>
+            <div class="form-group">
+                <input class="add-input" id="add-item-name" type="text" placeholder="Enter item name" required>
+            </div>
+            <div class="form-group">
+                <input class="add-input" id="add-item-description" type="text" placeholder="Enter item description" required>
+            </div>
+             <div class="form-group">
+                <input class="add-input" id="add-item-url" type="text" placeholder="Enter item image url" required>
+            </div>
+            <div class="form-group">
+                <label for="user-name">Category</label>
+                <select class="form-control" id="add-item-category">
+                    <option value="General" selected>General</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Appliances">Appliances</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Books">Book</option>
+                </select>
+            </div>
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" class="addButton" id="add-new-item" lender-id="{{userId}}">Add item</button>
+            </div>
+        </form>
     </div>       
 </div>

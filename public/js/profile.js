@@ -44,6 +44,23 @@ $(document).ready(function() {
             window.location.href = "/items-by-lender";
         });
     });
+
+    $("#add-new-item").on("click", function() {
+        var newItem = {
+            addItemName: $("#add-item-name").val().trim(),
+            addItemDescription: $("#add-item-description").val().trim(),
+            addItemUrl: $("#add-item-url").val().trim(),
+            addItemCategory: $("#add-item-category").val().trim(),
+            addItemLender: $("#add-new-item").attr("lender-id")
+        };
+        $.ajax({
+            method: "POST",
+            url: "/add-item",
+            data: newItem
+        }).done(function() {
+            window.location.href = "/items-by-lender";
+        });
+    });
 });
 
 // function getUserDetails() {

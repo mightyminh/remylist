@@ -1,102 +1,46 @@
-    <div class="container text-center">
-        <div class="bs-example">
+<div class="container">
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+            <li class="active"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All items</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <h1 class="text-center">Remy's List</h1>
+        <p class="text-center">The Neighborhood Hub</p>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
             <ul class="nav nav-tabs">
-                <li><a href="home.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li class="active"><a href="profile.html"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                <li><a href="profile.html"><span class="glyphicon glyphicon-envelope"></span> Requests</a></li>
+                <li><a href="/profile"><span class="glyphicon"></span> Personal Info</a></li>
+                <li><a href="/items-by-lender"><span class="glyphicon"></span> Lending</a></li>
+                <li class="active"><a href="/items-by-borrower"><span class="glyphicon"></span> Borrowed</a></li>
             </ul>
         </div>
-
-        <div class="jumbotron bg">
-            <h1 class="text-center">Remy's List</h1>
-            <h4> </h4>
-            <p class="text-center">The Neighborhood Hub</p>
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-7">
-                    <div class="bs-example">
-                        <ul class="nav nav-tabs">
-
-                            <li><a href="profile.html"><span class="glyphicon"></span> Personal Info</a></li>
-                            <li><a href="lend.html"><span class="glyphicon"></span> Lend</a></li>
-                            <li class="active"><a href="borrow.html"><span class="glyphicon"></span> Borrow</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- <div class="row text-center file-upload-section">
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-lg-offset-1">
-                        <br> -->
-                       <!--  <table style="width:100%">
-                            <tr>
-                                <th>Items you borrowed</th>
-                                <th>Return Date</th>
-                                <th>status</th>
-                            </tr>
-                            <tr>
-                                <td> dummmy </td>
-                                <td>Date</td>
-                                <td>Overdue/3 days left</td>
-                            </tr>
-
-                        </table> -->
-<!-- 
-                    </div>
-                </div>
-            -->
-            <div class="row">
-                <div class="container render-list">
-                    <p> Select items to borrow </p>
-
-                    <div class="col-md-4">
-
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                By Category
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu category" aria-labelledby="by-category">
-                                <li class="category1"><a href="#">Home Goods</a></li>
-                                <li class="category2"><a href="#">Academic</a></li>
-                                <li class="category3"><a href="#">Jewelery</a></li>
-                                <li role="separator" class="divider"></li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-4">
-
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="by-location" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                By Location
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu location" aria-labelledby="by-location">
-                                <li class="location1"><a href="#">Escondido</a></li>
-                                <li class="location2"><a href="#">San Diego</a></li>
-                                <li class="location3"><a href="#">San Jose</a></li>
-
-                                <li role="separator" class="divider"></li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-4">
-                        <button class="btn btn-default all" type="button" aria-haspopup="true" aria-expanded="true">See All available items</button>
-
-                    </div>
-
-                    <div class="container info-display">
-                        <div id="items" class="borrow-info"> </div>
-                        <p id="item-name" class="borrow-info"> {{data.name}}</p>
-                        <p id="item-desc" class="borrow-info"> {{data.description}}</p>
-                        <p id="category" class="borrow-info"> {{data.category}}</p>
-                        <p id="img" class="borrow-info"> {{data.imageURL}}</p>
-                        <p id="avail" class="borrow-info"> {{data.available}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <p class="text-center">Items you borrowed</p>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Image url</th>
+                </tr>
+                {{#each items}}
+                <tr>
+                    <td>{{this.name}} </td>
+                    <td>{{this.category}} </td>
+                    <td>{{this.description}} </td>
+                    <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
+                </tr>
+                {{else}}
+                    <p>You haven't borrowed anything</p>
+                {{/each}}
+            </table>
+        </div>
+    </div> 
+</div>

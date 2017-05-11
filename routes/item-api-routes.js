@@ -57,7 +57,7 @@ module.exports = function(app) {
             var itemsObject = {
                 items: dbItem
             };
-            res.json(dbItem);
+            // res.json(dbItem);
             res.render("", itemsObject);
         });
     });
@@ -112,7 +112,7 @@ module.exports = function(app) {
             var itemsObject = {
                 items: dbItem
             };
-            res.json(dbItem);
+            // res.json(dbItem);
             res.render("borrow", itemsObject);
         });
     });
