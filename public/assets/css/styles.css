@@ -1,3 +1,9 @@
+body {
+    background-image: url(../img/background.png);
+    background-size: 30%;
+    background-repeat: repeat;
+}
+
 .home-banner {
     margin-bottom: 0px;
     background-image: url(../img/jumbotron.png);
