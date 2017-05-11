@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container background-white">
     <div class="row">
         <ul class="nav nav-tabs">
             <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <p class="text-center">Items you are offering to lend</p>
             <table class="table">
                 <tr>
@@ -45,7 +45,7 @@
                         <td>Unavailable <button type="button" class="btn btn-success btn-xs" id="make-available" unavailable-item-id="{{this.id}}">Change</button> </td>
                     {{/if}}
                     <td>{{this.Borrower.fullName}} </td>
-                    <td><button type="button" class="btn btn-primary btn-xs" id="edit-item" edit-item-id="{{this.id}}">Edit</button></td>       
+                    <td><button type="button" class="btn btn-warning btn-xs" id="delete-item" delete-item-id="{{this.id}}">Delete</button></td>       
                 </tr>
                 {{else}}
                     <p>Record not available</p>
@@ -61,7 +61,7 @@
         <form class="modal-content">
             <p class="text-center add-item-form-title">Add new Item</p>
             <div class="form-group">
-                <input class="add-input" id="add-item-name" value="{{userId}}" type="text" placeholder="Enter item name" required>
+                <input class="add-input" id="add-item-name" type="text" placeholder="Enter item name" required>
             </div>
             <div class="form-group">
                 <input class="add-input" id="add-item-description" type="text" placeholder="Enter item description" required>
