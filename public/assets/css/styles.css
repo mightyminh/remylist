@@ -14,7 +14,10 @@ body {
 
 .background-white {
     background-color: #eeeeee;
-    padding-bottom: 20px
+}
+
+.signup-style {
+    padding-top: 10px;
 }
 
 h1 {
