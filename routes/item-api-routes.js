@@ -94,7 +94,8 @@ module.exports = function(app) {
             }]
         }).then(function(dbItem) {
             var itemsObject = {
-                items: dbItem
+                items: dbItem,
+                userId: userDataId
             };
             res.render("lend", itemsObject);
         });
