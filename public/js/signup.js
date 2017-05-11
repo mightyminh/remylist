@@ -5,11 +5,10 @@ $(document).ready(function() {
         var repeatPassword = $(this).val().trim();
 
         if (newPassword && repeatPassword && (repeatPassword != newPassword)) {
-            console.log("no match");
+            $("#password-message").show();
             $("#password-message").text("password don't match");
         } else {
-            $("#password-message").text("password don't match").hide();
-            console.log("matching");
+            $("#password-message").hide();
         }
     });
 
