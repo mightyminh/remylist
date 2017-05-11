@@ -63,7 +63,7 @@ $(document).ready(function() {
     });
     $("#delete-item").on("click", function() {
         var deleteId = {
-            itemId: parseInt($("#delete-item").attr("delete-item-id"))
+            itemId: $("#delete-item").attr("delete-item-id")
         };
 
         $.ajax({
