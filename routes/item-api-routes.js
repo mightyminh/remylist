@@ -14,15 +14,12 @@ module.exports = function(app) {
     // Signed-in user can add a new item to lend
     app.post("/add-item", function(req, res) {
         db.Item.create({
-            name: "sewing machine",
-            category: "Homegoods",
-            description: "simple sewing machine",
-            imageURL: "https://images-na.ssl-images-amazon.com/images/I/6183wgXfS5L._SL1500_.jpg",
-            UserId: 1
-        }).then(function(dbItem) {
-            res.json(dbItem);
-            res.render("");
-        });
+            name: req.body.addItemName,
+            category: req.body.addItemCategory,
+            description: req.body.addItemDescription,
+            imageURL: req.body.addItemUrl,
+            lender_id: req.body.addItemLender
+        }).then(function(dbItem) {});
     });
 
     // RETRIEVE 
