@@ -22,6 +22,7 @@
     </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+        {{#if items}}
             {{#if userLoggedIn}}
             <table class="table">
                 <tr>
@@ -48,8 +49,6 @@
                     <td></td>
                     {{/if}}
                 </tr>
-                {{else}}
-                <p>Record not available</p>
                 {{/each}}
             </table>
             {{else}}
@@ -78,11 +77,12 @@
                     <td></td>
                     {{/if}}
                 </tr>
-                {{else}}
-                <p>Record not available</p>
                 {{/each}}
             </table>
             {{/if}}
+        {{else}}
+                <p>Record not available</p>
+        {{/if}}
         </div>
     </div>
     <div id="id01" class="modal-box">
