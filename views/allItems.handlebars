@@ -22,66 +22,66 @@
     </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            {{#if userLoggedIn}}
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Image link</th>
-                    <th>Location</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-                {{#each items}}
-                <tr>
-                    <td>{{this.name}}</td>
-                    <td>{{this.category}} </td>
-                    <td>{{this.description}} </td>
-                    <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
-                    <td>{{this.Lender.location}} </td>
-                    {{#if this.available}}
-                        <td>Available</td>
-                        <td> <button type="button" class="btn btn-success btn-xs" id="request-item" request-item-id="{{this.id}}" onclick="document.getElementById('id01').style.display='block'">Request</button> </td>
-                    {{else}}
-                    <td>Unavailable</td>
-                    <td></td>
-                    {{/if}}
-                </tr>
+            {{#if items}}
+                {{#if userLoggedIn}}
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Image link</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                        {{#each items}}
+                            <tr>
+                                <td>{{this.name}}</td>
+                                <td>{{this.category}} </td>
+                                <td>{{this.description}} </td>
+                                <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
+                                <td>{{this.Lender.location}} </td>
+                                {{#if this.available}}
+                                    <td>Available</td>
+                                    <td> <button type="button" class="btn btn-success btn-xs" id="request-item" request-item-id="{{this.id}}" onclick="document.getElementById('id01').style.display='block'">Request</button> </td>
+                                {{else}}
+                                    <td>Unavailable</td>
+                                    <td></td>
+                                {{/if}}
+                            </tr>
+                        {{/each}}
+                    </table>
                 {{else}}
-                <p>Record not available</p>
-                {{/each}}
-            </table>
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Image link</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                        {{#each items}}
+                            <tr>
+                                <td>{{this.name}}</td>
+                                <td>{{this.category}} </td>
+                                <td>{{this.description}} </td>
+                                <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
+                                <td>{{this.Lender.location}} </td>
+                                {{#if this.available}}
+                                    <td>Available</td>
+                                    <td><a href="/"><button type="button" class="btn btn-primary btn-xs"> Login to borrow</button></a></td>
+                                {{else}}
+                                    <td>Unavailable</td>
+                                    <td></td>
+                                {{/if}}
+                            </tr>
+                        {{/each}}
+                    </table>
+                {{/if}}
             {{else}}
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Image link</th>
-                    <th>Location</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-                {{#each items}}
-                <tr>
-                    <td>{{this.name}}</td>
-                    <td>{{this.category}} </td>
-                    <td>{{this.description}} </td>
-                    <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
-                    <td>{{this.Lender.location}} </td>
-                    {{#if this.available}}
-                        <td>Available</td>
-                        <td><a href="/"><button type="button" class="btn btn-primary btn-xs"> Login to borrow</button></a></td>
-                    {{else}}
-                    <td>Unavailable</td>
-                    <td></td>
-                    {{/if}}
-                </tr>
-                {{else}}
-                <p>Record not available</p>
-                {{/each}}
-            </table>
+                <p class="text-center">No item available</p>
             {{/if}}
         </div>
     </div>
