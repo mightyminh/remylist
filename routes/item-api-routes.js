@@ -149,7 +149,7 @@ module.exports = function(app) {
             borrower_id: req.user.id
         }, {
             where: {
-                id: req.body.itemId
+                id: parseInt(req.body.itemId)
             }
         }).then(function(dbItem) {
             res.render("all-item");
