@@ -30,6 +30,7 @@
                     <th>Category</th>
                     <th>Description</th>
                     <th>Image url</th>
+                    <th></th>
                 </tr>
                 {{#each items}}
                 <tr>
@@ -37,6 +38,7 @@
                     <td class="title-case">{{this.category}} </td>
                     <td>{{this.description}} </td>
                     <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
+                    <td><button type="button" class="btn btn-info btn-xs title-case reply-lender" lender-id="{{this.lender_id}}" onclick="document.getElementById('id01').style.display='block'">Mail to lender</button></td>
                 </tr>
                 {{/each}}
             </table>
@@ -44,5 +46,18 @@
                 <p class="text-center no-record-message">You haven't borrowed anything</p>
             {{/if}}
         </div>
+    </div> 
+    <div id="id01" class="modal-box">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> 
+        <form class="modal-content">
+            <p class="text-center">Send mail</p>
+            <div class="form-group">
+               <textarea class="form-control" rows="5" id="reply-lender-mail" placeholder="Enter your message here..." required></textarea>
+            </div>
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" class="addButton contact-lender">Submit</button>
+            </div>
+        </form>
     </div> 
 </div>

@@ -208,4 +208,40 @@ module.exports = function(app, passport) {
             }
         });
     });
+
+    app.post('/contact-lender', function(req, res) {
+        var userDataId = req.user.id;
+        db.User.findAll({
+            where: {
+                id: userDataId
+            }
+        }).then(function(dbUser) {
+            var fromMail = dbUser[0].dataValues.email;
+            if (isNaN(req.body.lenderId)) {
+                console.log("Mail NOT sent");
+            } else {
+                db.User.findAll({
+                    where: {
+                        id: parseInt(req.body.lenderId)
+                    }
+                }).then(function(dbLender) {
+                    var toMail = dbLender[0].dataValues.email;
+                    var borrowerSubject = "Regarding my last borrow from you through Remy's List";
+                    let mailOptions = {
+                        from: fromMail,
+                        to: toMail,
+                        subject: borrowerSubject,
+                        text: req.body.mailMessage
+                    };
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message %s sent: %s', info.messageId, info.response);
+                    });
+                    res.render("lend");
+                });
+            }
+        });
+    });
 };
