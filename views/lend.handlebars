@@ -41,9 +41,9 @@
                     <td>{{this.description}} </td>
                     <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
                     {{#if this.available}}
-                        <td>Available <button type="button" class="btn btn-danger btn-xs make-unavailable" available-item-id="{{this.id}}">Change</button> </td>
+                        <td><button type="button" class="btn btn-success btn-xs make-unavailable" available-item-id="{{this.id}}">Available</button> </td>
                     {{else}}
-                        <td>Unavailable <button type="button" class="btn btn-success btn-xs make-available" unavailable-item-id="{{this.id}}">Change</button> </td>
+                        <td><button type="button" class="btn btn-danger btn-xs make-available" unavailable-item-id="{{this.id}}">Unavailable</button> </td>
                     {{/if}}
                     <td class="title-case">{{this.Borrower.fullName}} </td>
                     <td ><button type="button" class="btn btn-warning btn-xs delete-item" delete-item-id="{{this.id}}">Delete</button></td>       

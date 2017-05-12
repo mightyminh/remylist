@@ -45,6 +45,7 @@ $(document).ready(function() {
             window.location.href = "/items-by-lender";
         });
     });
+
     // Deleting an item from the database
     $(".delete-item").on("click", function() {
         var deleteId = {
