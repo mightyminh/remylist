@@ -25,6 +25,13 @@ body {
     text-transform: capitalize;
 }
 
+.secondary-heading {
+    font-size: 20px;
+    font-style: italic;
+    font: verdana;
+    color: #f6911b;
+}
+
 h1 {
     color: white;
     text-shadow: black 0.1em 0.1em 0.2em;
@@ -35,7 +42,11 @@ h1 {
 }
 
 footer {
-    padding-top: 20px;
+    padding-top: 50px;
+}
+
+.button-signin {
+    size: 40px;
 }
 
 
