@@ -32,6 +32,10 @@ body {
     color: #f6911b;
 }
 
+.goto-signup {
+    padding-top: 17px;
+}
+
 h1,
 .logo-subtext {
     color: white;
