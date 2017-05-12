@@ -112,11 +112,17 @@ footer {
     background-color: #f44336;
 }
 
-.addButton {
+.addButton,
+.send-mail {
     background-color: #008000;
 }
 
-.send-mail {
+.send-mail,
+.button-signin {
     width: 100%;
-    background-color: #008000;
+}
+
+#login-message,
+#signup-message {
+    color: red;
 }
