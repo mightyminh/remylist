@@ -14,9 +14,9 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <ul class="nav nav-tabs">
-                <li><a href="/profile"><span class="glyphicon"></span> Personal Info</a></li>
-                <li class="active"><a href="/items-by-lender"><span class="glyphicon"></span> Lending</a></li>
-                <li><a href="/items-by-borrower"><span class="glyphicon"></span> Borrowed</a></li>
+                <li><a href="/profile">Personal Info</a></li>
+                <li class="active"><a href="/items-by-lender">Lend</a></li>
+                <li><a href="/items-by-borrower">Borrow</a></li>
             </ul>
         </div>
     </div>
@@ -45,7 +45,7 @@
                     {{else}}
                         <td><button type="button" class="btn btn-danger btn-xs make-available" unavailable-item-id="{{this.id}}">Unavailable</button> </td>
                     {{/if}}
-                    <td class="title-case">{{this.Borrower.fullName}} </td>
+                    <td><button type="button" class="btn btn-info btn-xs title-case reply-borrower" borrower-id="{{this.Borrower.id}}" onclick="document.getElementById('id02').style.display='block'">Mail to {{this.Borrower.fullName}}</button></td>
                     <td ><button type="button" class="btn btn-warning btn-xs delete-item" delete-item-id="{{this.id}}">Delete</button></td>       
                 </tr>
                 {{/each}}
@@ -58,6 +58,7 @@
     <div class="row text-center">
         <button type="button" class="btn btn-primary btn-xs" onclick="document.getElementById('id01').style.display='block'">Add new item</button>
     </div>
+
     <div id="id01" class="modal-box">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> 
         <form class="modal-content">
@@ -87,5 +88,19 @@
                 <button type="submit" class="addButton" id="add-new-item" lender-id="{{userId}}">Add item</button>
             </div>
         </form>
-    </div>       
+    </div>  
+
+    <div id="id02" class="modal-box">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span> 
+        <form class="modal-content">
+            <p class="text-center">Send mail</p>
+            <div class="form-group">
+               <textarea class="form-control" rows="5" id="reply-email" placeholder="Enter your message here..." required></textarea>
+            </div>
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" class="addButton send-reply">Submit</button>
+            </div>
+        </form>
+    </div>     
 </div>

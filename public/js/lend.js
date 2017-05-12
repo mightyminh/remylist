@@ -92,4 +92,22 @@ $(document).ready(function() {
             window.location.href = "/all-items";
         });
     });
+
+    var itemBorrowerId;
+    $(".reply-borrower").on("click", function() {
+        itemBorrowerId = $(this).attr("borrower-id")
+    });
+
+    // Sending mail to the borrower
+    $(".send-reply").on("click", function() {
+        var reply = {
+            mailMessage: $("#reply-email").val(),
+            borrowerId: itemBorrowerId
+        };
+        $.ajax({
+            method: "POST",
+            url: "/send-reply",
+            data: reply
+        }).done(function() {});
+    });
 });

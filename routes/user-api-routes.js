@@ -172,4 +172,40 @@ module.exports = function(app, passport) {
             }
         });
     });
+
+    app.post('/send-reply', function(req, res) {
+        var userDataId = req.user.id;
+        db.User.findAll({
+            where: {
+                id: userDataId
+            }
+        }).then(function(dbUser) {
+            var fromMail = dbUser[0].dataValues.email;
+            if (isNaN(req.body.borrowerId)) {
+                console.log("Mail NOT sent");
+            } else {
+                db.User.findAll({
+                    where: {
+                        id: parseInt(req.body.borrowerId)
+                    }
+                }).then(function(dbBorrower) {
+                    var toMail = dbBorrower[0].dataValues.email;
+                    var lendSubject = "Regarding your last borrow from Remy's List";
+                    let mailOptions = {
+                        from: fromMail,
+                        to: toMail,
+                        subject: lendSubject,
+                        text: req.body.mailMessage
+                    };
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message %s sent: %s', info.messageId, info.response);
+                    });
+                    res.render("lend");
+                });
+            }
+        });
+    });
 };
