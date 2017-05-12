@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
+    //User updating the status of item "Available" and updating database
     $(".make-unavailable").on("click", function(e) {
-        console.log(e.target);
         var itemUnavailable = {
             itemId: $(this).attr("available-item-id")
         };
@@ -14,6 +14,7 @@ $(document).ready(function() {
         });
     });
 
+    //User updating the status of item "Unvailable" and updating database
     $(".make-available").on("click", function() {
         var itemAvailable = {
             itemId: $(this).attr("unavailable-item-id")
@@ -27,6 +28,7 @@ $(document).ready(function() {
         });
     });
 
+    // Adding a new item to the database
     $("#add-new-item").on("click", function() {
         var newItem = {
             addItemName: $("#add-item-name").val().trim(),
@@ -43,7 +45,7 @@ $(document).ready(function() {
             window.location.href = "/items-by-lender";
         });
     });
-
+    // Deleting an item from the database
     $(".delete-item").on("click", function() {
         var deleteId = {
             itemId: $(".delete-item").attr("delete-item-id")
@@ -58,8 +60,8 @@ $(document).ready(function() {
         });
     });
 
+    // Requesting and setting borrower's ID to the database
     var itemRequestId;
-
     $(".request-item").on("click", function() {
         var request = {
             itemId: $(this).attr("request-item-id")
@@ -74,6 +76,7 @@ $(document).ready(function() {
         });
     });
 
+    // Sending mail to the lender
     $(".send-mail").on("click", function() {
         var mail = {
             numDays: $("#num-days").val(),
