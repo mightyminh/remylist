@@ -36,7 +36,7 @@
                 </tr>
                 {{#each items}}
                 <tr>
-                    <td>{{this.name}} </td>
+                    <td class="title-case">{{this.name}} </td>
                     <td>{{this.category}} </td>
                     <td>{{this.description}} </td>
                     <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
@@ -45,8 +45,8 @@
                     {{else}}
                         <td>Unavailable <button type="button" class="btn btn-success btn-xs" id="make-available" unavailable-item-id="{{this.id}}">Change</button> </td>
                     {{/if}}
-                    <td>{{this.Borrower.fullName}} </td>
-                    <td><button type="button" class="btn btn-warning btn-xs" id="delete-item" delete-item-id="{{this.id}}">Delete</button></td>       
+                    <td class="title-case">{{this.Borrower.fullName}} </td>
+                    <td ><button type="button" class="btn btn-warning btn-xs" id="delete-item" delete-item-id="{{this.id}}">Delete</button></td>       
                 </tr>
                 {{/each}}
             </table>

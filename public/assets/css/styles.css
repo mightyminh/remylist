@@ -21,6 +21,10 @@ body {
     padding-top: 10px;
 }
 
+.title-case {
+    text-transform: capitalize;
+}
+
 h1 {
     color: white;
     text-shadow: black 0.1em 0.1em 0.2em;
