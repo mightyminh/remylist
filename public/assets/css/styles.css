@@ -13,7 +13,7 @@ body {
 }
 
 .background-white {
-    background-color: #eeeeee;
+    background-color: #f5f5f5;
     padding-bottom: 20px;
 }
 
@@ -53,9 +53,6 @@ footer {
 .button-signin {
     size: 40px;
 }
-
-
-/*Styling for modal*/
 
 .modal-box {
     display: none;
@@ -128,6 +125,7 @@ footer {
 }
 
 #login-message,
-#signup-message {
+#signup-message,
+#password-message {
     color: red;
 }
