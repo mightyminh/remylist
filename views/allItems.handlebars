@@ -43,7 +43,7 @@
                                 <td>{{this.Lender.location}} </td>
                                 {{#if this.available}}
                                     <td>Available</td>
-                                    <td> <button type="button" class="btn btn-success btn-xs" id="request-item" request-item-id="{{this.id}}" onclick="document.getElementById('id01').style.display='block'">Request</button> </td>
+                                    <td> <button type="button" class="btn btn-success btn-xs request-item" request-item-id="{{this.id}}" onclick="document.getElementById('id01').style.display='block'">Request</button> </td>
                                 {{else}}
                                     <td>Unavailable</td>
                                     <td></td>
@@ -96,7 +96,7 @@
                <textarea class="form-control" rows="5" id="email-message" placeholder="Enter your message here..." required></textarea>
             </div>
             <div class="clearfix">
-                <button type="submit" class="addButton" id="send-mail">Submit</button>
+                <button type="submit" class="addButton send-mail">Submit</button>
             </div>
         </form>
     </div>    

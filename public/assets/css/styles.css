@@ -115,3 +115,8 @@ footer {
 .addButton {
     background-color: #008000;
 }
+
+.send-mail {
+    width: 100%;
+    background-color: #008000;
+}
