@@ -41,12 +41,20 @@
                     <td>{{this.description}} </td>
                     <td><a href="{{this.imageURL}}" target="_blank">Click Me</td>
                     {{#if this.available}}
-                        <td><button type="button" class="btn btn-success btn-xs make-unavailable" available-item-id="{{this.id}}">Available</button> </td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-xs make-unavailable" available-item-id="{{this.id}}">Available</button> 
+                        </td>
                     {{else}}
-                        <td><button type="button" class="btn btn-danger btn-xs make-available" unavailable-item-id="{{this.id}}">Unavailable</button> </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-xs make-available" unavailable-item-id="{{this.id}}">Unavailable</button> 
+                        </td>
                     {{/if}}
-                    <td><button type="button" class="btn btn-info btn-xs title-case reply-borrower" borrower-id="{{this.Borrower.id}}" onclick="document.getElementById('id02').style.display='block'">Mail to {{this.Borrower.fullName}}</button></td>
-                    <td ><button type="button" class="btn btn-warning btn-xs delete-item" delete-item-id="{{this.id}}">Delete</button></td>       
+                    <td>
+                        <button type="button" class="btn btn-info btn-xs title-case reply-borrower" borrower-id="{{this.Borrower.id}}" onclick="document.getElementById('id02').style.display='block'">Email {{this.Borrower.fullName}}</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-xs delete-item" delete-item-id="{{this.id}}">Delete</button>
+                    </td>       
                 </tr>
                 {{/each}}
             </table>
