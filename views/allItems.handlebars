@@ -4,11 +4,11 @@
             {{#if userLoggedIn}}
                 <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                <li class="active"><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All items</a></li>
+                <li class="active"><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All Items</a></li>
                 <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             {{else}}
                 <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li class="active"><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All items</a></li>
+                <li class="active"><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All Items</a></li>
             {{/if}}
         </ul>
     </div>
@@ -29,7 +29,7 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>Description</th>
-                            <th>Image link</th>
+                            <th>Image Link</th>
                             <th>Location</th>
                             <th>Status</th>
                             <th></th>
@@ -39,7 +39,7 @@
                                 <td>{{this.name}}</td>
                                 <td>{{this.category}} </td>
                                 <td>{{this.description}} </td>
-                                <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
+                                <td><a href="{{this.imageURL}}" target="_blank">Click Here</td>
                                 <td>{{this.Lender.location}} </td>
                                 {{#if this.available}}
                                     <td>Available</td>
@@ -57,7 +57,7 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th>Description</th>
-                            <th>Image link</th>
+                            <th>Image Link</th>
                             <th>Location</th>
                             <th>Status</th>
                             <th></th>
@@ -67,11 +67,11 @@
                                 <td>{{this.name}}</td>
                                 <td>{{this.category}} </td>
                                 <td>{{this.description}} </td>
-                                <td><a href="{{this.imageURL}}" target="_blank">Click here</td>
+                                <td><a href="{{this.imageURL}}" target="_blank">Click Here</td>
                                 <td>{{this.Lender.location}} </td>
                                 {{#if this.available}}
                                     <td>Available</td>
-                                    <td><a href="/"><button type="button" class="btn btn-primary btn-xs"> Login to borrow</button></a></td>
+                                    <td><a href="/"><button type="button" class="btn btn-primary btn-xs"> Login to Borrow</button></a></td>
                                 {{else}}
                                     <td>Unavailable</td>
                                     <td></td>
@@ -81,14 +81,14 @@
                     </table>
                 {{/if}}
             {{else}}
-                <p class="text-center">No item available</p>
+                <p class="text-center">No Items Availables</p>
             {{/if}}
         </div>
     </div>
     <div id="id01" class="modal-box">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> 
         <form class="modal-content">
-            <p class="text-center"> Send mail</p>
+            <p class="text-center">Send Email</p>
              <div class="form-group">
                 <input class="add-input" id="num-days" type="number" placeholder="Number of days" required>
             </div>

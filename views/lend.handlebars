@@ -3,7 +3,7 @@
         <ul class="nav nav-tabs">
             <li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             <li class="active"><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All items</a></li>
+            <li><a href="/all-items"><span class="glyphicon glyphicon-th-list"></span> All Items</a></li>
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
@@ -29,7 +29,7 @@
                     <th>Name</th>
                     <th>Category</th>
                     <th>Description</th>
-                    <th>Image url</th>
+                    <th>Image Link</th>
                     <th>Status</th>
                     <th>Borrower</th>
                     <th></th>
@@ -39,7 +39,7 @@
                     <td class="title-case">{{this.name}} </td>
                     <td>{{this.category}} </td>
                     <td>{{this.description}} </td>
-                    <td><a href="{{this.imageURL}}" target="_blank">Click me</td>
+                    <td><a href="{{this.imageURL}}" target="_blank">Click Me</td>
                     {{#if this.available}}
                         <td><button type="button" class="btn btn-success btn-xs make-unavailable" available-item-id="{{this.id}}">Available</button> </td>
                     {{else}}
@@ -51,18 +51,18 @@
                 {{/each}}
             </table>
             {{else}}
-                <p class="text-center no-record-message">You haven't lending anything</p>
+                <p class="text-center no-record-message">You aren't lending anything</p>
             {{/if}}
         </div>
     </div> 
     <div class="row text-center">
-        <button type="button" class="btn btn-primary btn-xs" onclick="document.getElementById('id01').style.display='block'">Add new item</button>
+        <button type="button" class="btn btn-primary btn-xs" onclick="document.getElementById('id01').style.display='block'">Add New Item</button>
     </div>
 
     <div id="id01" class="modal-box">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> 
         <form class="modal-content">
-            <p class="text-center add-item-form-title">Add new Item</p>
+            <p class="text-center add-item-form-title">Add New Item</p>
             <div class="form-group">
                 <input class="add-input" id="add-item-name" type="text" placeholder="Enter item name" required>
             </div>
@@ -85,7 +85,7 @@
             </div>
             <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" class="addButton" id="add-new-item" lender-id="{{userId}}">Add item</button>
+                <button type="submit" class="addButton" id="add-new-item" lender-id="{{userId}}">Add Item</button>
             </div>
         </form>
     </div>  
@@ -93,7 +93,7 @@
     <div id="id02" class="modal-box">
         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span> 
         <form class="modal-content">
-            <p class="text-center">Send mail</p>
+            <p class="text-center">Send Email</p>
             <div class="form-group">
                <textarea class="form-control" rows="5" id="reply-email" placeholder="Enter your message here..." required></textarea>
             </div>
