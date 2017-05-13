@@ -26,7 +26,7 @@
            <p class="text-center secondary-heading">Items you are offering to lend</p>
             <table class="table">
                 <tr>
-                    <th>Name</th>
+                    <th>Item</th>
                     <th>Category</th>
                     <th>Description</th>
                     <th>Image Link</th>
@@ -39,7 +39,7 @@
                     <td class="title-case">{{this.name}} </td>
                     <td>{{this.category}} </td>
                     <td>{{this.description}} </td>
-                    <td><a href="{{this.imageURL}}" target="_blank">Click Me</td>
+                    <td><a href="{{this.imageURL}}" target="_blank">Click here</a></td>
                     {{#if this.available}}
                         <td>
                             <button type="button" class="btn btn-success btn-xs make-unavailable" available-item-id="{{this.id}}">Available</button> 
@@ -89,6 +89,9 @@
                     <option value="Appliances">Appliances</option>
                     <option value="Electronics">Electronics</option>
                     <option value="Books">Book</option>
+                    <option value="Games">Fun & Games</option>
+                    <option value="Hobbies">Hobbies</option>
+                    <option value="Clothes">Clothes</option>
                 </select>
             </div>
             <div class="clearfix">

@@ -13,7 +13,9 @@ module.exports = function(app) {
             description: req.body.addItemDescription,
             imageURL: req.body.addItemUrl,
             lender_id: req.body.addItemLender
-        }).then(function(dbItem) {});
+        }).then(function(dbItem) {
+            res.render("lend");
+        });
     });
 
     // RETRIEVE 
@@ -106,7 +108,6 @@ module.exports = function(app) {
             var itemsObject = {
                 items: dbItem
             };
-            // res.json(dbItem);
             res.render("borrow", itemsObject);
         });
     });
@@ -158,11 +159,11 @@ module.exports = function(app) {
             imageURL: req.body.itemUrl
         }, {
             where: {
-                id: itemId
+                id: req.body.itemId
             }
         }).then(function(dbPost) {
             res.json(dbPost);
-            res.render("lend-items");
+            res.render("");
         });
     });
 

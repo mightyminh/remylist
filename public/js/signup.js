@@ -6,7 +6,7 @@ $(document).ready(function() {
 
         if (newPassword && repeatPassword && (repeatPassword != newPassword)) {
             $("#password-message").show();
-            $("#password-message").text("password don't match");
+            $("#password-message").text("Passwords don't match");
         } else {
             $("#password-message").hide();
         }

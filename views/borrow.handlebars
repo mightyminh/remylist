@@ -26,7 +26,7 @@
             <p class="text-center secondary-heading">Items you are borrowing</p>
             <table class="table">
                 <tr>
-                    <th>Name</th>
+                    <th>Item</th>
                     <th>Category</th>
                     <th>Description</th>
                     <th>Image Link</th>
@@ -37,7 +37,7 @@
                     <td class="title-case">{{this.name}} </td>
                     <td class="title-case">{{this.category}} </td>
                     <td>{{this.description}} </td>
-                    <td><a href="{{this.imageURL}}" target="_blank">Click Me</td>
+                    <td><a href="{{this.imageURL}}" target="_blank">Click here</a></td>
                     <td><button type="button" class="btn btn-info btn-xs title-case reply-lender" lender-id="{{this.lender_id}}" onclick="document.getElementById('id01').style.display='block'">Email Lender</button></td>
                 </tr>
                 {{/each}}
