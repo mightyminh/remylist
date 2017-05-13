@@ -14,7 +14,7 @@ $(document).ready(function() {
         });
     });
 
-    //User updating the status of item "Unvailable" and updating database
+    //User updating the status of item "Unavailable" and updating database
     $(".make-available").on("click", function() {
         var itemAvailable = {
             itemId: $(this).attr("unavailable-item-id")
