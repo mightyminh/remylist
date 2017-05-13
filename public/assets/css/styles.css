@@ -28,7 +28,7 @@ body {
 .secondary-heading {
     font-size: 20px;
     font-style: italic;
-    font: verdana;
+    font-family: verdana;
     color: #f6911b;
 }
 
