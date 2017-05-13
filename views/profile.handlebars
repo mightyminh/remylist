@@ -48,7 +48,9 @@
         </div>
     </div>
     <div class="row text-center">
-        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger">Edit</button>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger btn-xs">
+            <span class="glyphicon glyphicon-pencil"></span> Edit
+        </button>
     </div>
     <div id="id01" class="modal-box">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> {{#each

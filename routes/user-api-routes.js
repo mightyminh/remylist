@@ -35,7 +35,6 @@ module.exports = function(app, passport) {
         passwordField: 'password',
         passReqToCallback: true
     }, function(req, username, password, done) {
-        var hashedPass = bcrypt.hashSync(password);
         db.User.findOne({
             where: { userName: username }
         }).then(function(user) {

@@ -42,18 +42,26 @@
                     <td><a href="{{this.imageURL}}" target="_blank">Click here</a></td>
                     {{#if this.available}}
                         <td>
-                            <button type="button" class="btn btn-success btn-xs make-unavailable" available-item-id="{{this.id}}">Available</button> 
+                            <button type="button" class="btn btn-success btn-xs make-unavailable" available-item-id="{{this.id}}">
+                                Available
+                            </button> 
                         </td>
                     {{else}}
                         <td>
-                            <button type="button" class="btn btn-danger btn-xs make-available" unavailable-item-id="{{this.id}}">Unavailable</button> 
+                            <button type="button" class="btn btn-danger btn-xs make-available" unavailable-item-id="{{this.id}}">
+                                Unavailable
+                            </button> 
                         </td>
                     {{/if}}
                     <td>
-                        <button type="button" class="btn btn-info btn-xs title-case reply-borrower" borrower-id="{{this.Borrower.id}}" onclick="document.getElementById('id02').style.display='block'">Email {{this.Borrower.fullName}}</button>
+                        <button type="button" class="btn btn-info btn-xs title-case reply-borrower" borrower-id="{{this.Borrower.id}}" onclick="document.getElementById('id02').style.display='block'">
+                            Email {{this.Borrower.fullName}}
+                        </button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-warning btn-xs delete-item" delete-item-id="{{this.id}}">Delete</button>
+                        <button type="button" class="btn btn-warning btn-xs delete-item" delete-item-id="{{this.id}}">
+                            <span class="glyphicon glyphicon-remove"></span> Delete
+                        </button>
                     </td>       
                 </tr>
                 {{/each}}
@@ -64,7 +72,7 @@
         </div>
     </div> 
     <div class="row text-center">
-        <button type="button" class="btn btn-primary btn-xs" onclick="document.getElementById('id01').style.display='block'">Add New Item</button>
+        <button type="button" class="btn btn-primary btn-xs" onclick="document.getElementById('id01').style.display='block'"><span class="glyphicon glyphicon-plus"></span> Add New Item</button>
     </div>
 
     <div id="id01" class="modal-box">
