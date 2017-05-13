@@ -153,7 +153,7 @@ module.exports = function(app, passport) {
                     }]
                 }).then(function(dbLender) {
                     var toMail = dbLender[0].dataValues.Lender.dataValues.email;
-                    var borrowSubject = "Remys list: Borrow " + dbLender[0].dataValues.name +
+                    var borrowSubject = "Remy's list: Borrow " + dbLender[0].dataValues.name +
                         " for " + req.body.numDays + " days";
                     let mailOptions = {
                         from: fromMail,
