@@ -4,6 +4,7 @@
 var db = require("../models");
 var isLoggedIn = require("./restrict.js");
 const nodemailer = require('nodemailer');
+var bcrypt = require('bcrypt-nodejs');
 
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -34,12 +35,13 @@ module.exports = function(app, passport) {
         passwordField: 'password',
         passReqToCallback: true
     }, function(req, username, password, done) {
+        var hashedPass = bcrypt.hashSync(password);
         db.User.findOne({
             where: { userName: username }
         }).then(function(user) {
             if (!user) {
                 return done(null, false, req.flash('userMessage', 'Incorrect username'));
-            } else if (password != user.password) {
+            } else if (!bcrypt.compareSync(password, user.password)) {
                 return done(null, false, req.flash('userMessage', 'Incorrect password'));
             } else {
                 return done(null, user);
@@ -58,7 +60,7 @@ module.exports = function(app, passport) {
             if (!user) {
                 db.User.create({
                     userName: username,
-                    password: password,
+                    password: bcrypt.hashSync(password),
                     fullName: req.body.fullname,
                     email: req.body.email,
                     location: req.body.locations
