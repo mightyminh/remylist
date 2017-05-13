@@ -1,13 +1,7 @@
 var db = require("../models");
 var isLoggedIn = require("./restrict.js");
 
-var itemId = 1;
-var userDataId = 1;
-var itemCat = "jewelery";
-var location = "san diego"
-
 // Routes
-// =============================================================
 module.exports = function(app) {
 
     // CREATE
@@ -51,7 +45,7 @@ module.exports = function(app) {
     app.get("/items-by-category", function(req, res) {
         db.Item.findAll({
             where: {
-                category: itemCat
+                category: req.body.itemCategory
             }
         }).then(function(dbItem) {
             var itemsObject = {
@@ -66,7 +60,7 @@ module.exports = function(app) {
     app.get("/items-by-location", function(req, res) {
         db.User.findAll({
             where: {
-                location: location
+                location: req.body.location
             },
             include: [{
                 model: db.Item,
@@ -158,10 +152,10 @@ module.exports = function(app) {
     // Lender update the information from an item already posted
     app.put("/update-item", function(req, res) {
         db.Item.update({
-            name: "Sewing Machine",
-            category: "Homegoods",
-            description: "Bernina sewing machine",
-            imageURL: "google.com"
+            name: req.body.itemName,
+            category: req.body.itemCategory,
+            description: req.body.addItemDescription,
+            imageURL: req.body.itemUrl
         }, {
             where: {
                 id: itemId
