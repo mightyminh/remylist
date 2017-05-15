@@ -6,6 +6,7 @@ var isLoggedIn = require("./restrict.js");
 const nodemailer = require('nodemailer');
 var bcrypt = require('bcrypt-nodejs');
 
+//Remy's list email account details
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -83,13 +84,14 @@ module.exports = function(app, passport) {
         failureFlash: true
     }));
 
-    // New user signup
+    // New user sign-up
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/profile',
         failureRedirect: '/signup',
         failureFlash: true
     }));
 
+    //Logged-in user log out
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
@@ -132,7 +134,7 @@ module.exports = function(app, passport) {
         });
     });
 
-    // Request email
+    // Requesting the product email by borrower
     app.post('/send-mail', function(req, res) {
         var userDataId = req.user.id;
         db.User.findAll({
@@ -174,6 +176,7 @@ module.exports = function(app, passport) {
         });
     });
 
+    //Email to the borrower by lender
     app.post('/send-reply', function(req, res) {
         var userDataId = req.user.id;
         db.User.findAll({
@@ -210,6 +213,7 @@ module.exports = function(app, passport) {
         });
     });
 
+    //Contacting lender by borrower
     app.post('/contact-lender', function(req, res) {
         var userDataId = req.user.id;
         db.User.findAll({

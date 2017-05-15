@@ -38,7 +38,9 @@
                     <td class="title-case">{{this.category}} </td>
                     <td>{{this.description}} </td>
                     <td><a href="{{this.imageURL}}" target="_blank">Click here</a></td>
-                    <td><button type="button" class="btn btn-info btn-xs title-case reply-lender" lender-id="{{this.lender_id}}" onclick="document.getElementById('id01').style.display='block'">Email Lender</button></td>
+                    <td>
+                        <button type="button" class="btn btn-info btn-xs title-case reply-lender" lender-id="{{this.lender_id}}" onclick="document.getElementById('id01').style.display='block'">Email Lender</button>
+                    </td>
                 </tr>
                 {{/each}}
             </table>

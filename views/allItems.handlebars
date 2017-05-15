@@ -43,7 +43,9 @@
                                 <td>{{this.Lender.location}} </td>
                                 {{#if this.available}}
                                     <td>Available</td>
-                                    <td> <button type="button" class="btn btn-success btn-xs request-item" request-item-id="{{this.id}}" onclick="document.getElementById('id01').style.display='block'">Request</button> </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs request-item" request-item-id="{{this.id}}" onclick="document.getElementById('id01').style.display='block'">Request</button>
+                                    </td>
                                 {{else}}
                                     <td>Unavailable</td>
                                     <td></td>

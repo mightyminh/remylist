@@ -24,26 +24,26 @@
         <div class="col-md-6 col-md-offset-3">
             <p class="text-center secondary-heading">Your Information</p>
             {{#each data}}
-            <table class="table personal-info">
-                <tr>
-                    <td>Full Name</td>
-                    <td class="title-case">{{this.fullName}}</td>
-                </tr>
-                <tr>
-                    <td>User Name</td>
-                    <td>{{this.userName}} </td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>{{this.email}}</td>
-                </tr>
-                <tr>
-                    <td>Location</td>
-                    <td class="title-case">{{this.location}}</td>
-                </tr>
-            </table>
+                <table class="table personal-info">
+                    <tr>
+                        <td>Full Name</td>
+                        <td class="title-case">{{this.fullName}}</td>
+                    </tr>
+                    <tr>
+                        <td>User Name</td>
+                        <td>{{this.userName}} </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{this.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td class="title-case">{{this.location}}</td>
+                    </tr>
+                </table>
             {{else}}
-            <p class="text-center no-record-message">Record not available</p>
+                <p class="text-center no-record-message">Record not available</p>
             {{/each}}
         </div>
     </div>
@@ -53,35 +53,35 @@
         </button>
     </div>
     <div id="id01" class="modal-box">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span> {{#each
-        data}}
-        <form class="modal-content">
-            <div class="form-group">
-                <label class="add-text"><b>Full Name</b></label>
-                <input class="add-input" id="update-full-name" type="text" placeholder="Edit your Full Name" value="{{this.fullName}}" name="fullName"
-                    required>
-            </div>
-            <div class="form-group">
-                <label class="add-text"><b>Email</b></label>
-                <input class="add-input" id="update-email-id" type="text" placeholder="Enter new email" value="{{this.email}}" name="email">
-            </div>
-            <div class="form-group">
-                <label class="add-text"><b>Location</b></label>
-                <select class="form-control" id="update-location" name="location" required>
-                    <option value="{{this.location}}">{{this.location}}</option>
-                    <option value="North Coast">North Coast</option>
-                    <option value="North Inland">North Inland</option>
-                    <option value="Central Coast">Central Coast</option>
-                    <option value="Central City">Central City</option>
-                    <option value="East County">East County</option>
-                    <option value="South Bay">South Bay</option>
-                </select>
-            </div>
-            <div class="clearfix">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" class="addButton" id="update-user">Update</button>
-            </div>
-        </form>
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+        {{#each data}}
+            <form class="modal-content">
+                <div class="form-group">
+                    <label class="add-text"><b>Full Name</b></label>
+                    <input class="add-input" id="update-full-name" type="text" placeholder="Edit your Full Name" value="{{this.fullName}}" name="fullName"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="add-text"><b>Email</b></label>
+                    <input class="add-input" id="update-email-id" type="text" placeholder="Enter new email" value="{{this.email}}" name="email">
+                </div>
+                <div class="form-group">
+                    <label class="add-text"><b>Location</b></label>
+                    <select class="form-control" id="update-location" name="location" required>
+                        <option value="{{this.location}}">{{this.location}}</option>
+                        <option value="North Coast">North Coast</option>
+                        <option value="North Inland">North Inland</option>
+                        <option value="Central Coast">Central Coast</option>
+                        <option value="Central City">Central City</option>
+                        <option value="East County">East County</option>
+                        <option value="South Bay">South Bay</option>
+                    </select>
+                </div>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="addButton" id="update-user">Update</button>
+                </div>
+            </form>
         {{/each}}
     </div>
 </div>

@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    // Updating user details
     $("#update-user").on("click", function() {
         var userInput = {
             updateFullName: $("#update-full-name").val().trim(),

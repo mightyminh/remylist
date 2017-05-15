@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+    //Real time validation on signup form
     $('#repeat-password').on("input", function() {
         var newPassword = $("#newuser-password").val().trim();
         var repeatPassword = $(this).val().trim();
@@ -11,5 +12,4 @@ $(document).ready(function() {
             $("#password-message").hide();
         }
     });
-
 });

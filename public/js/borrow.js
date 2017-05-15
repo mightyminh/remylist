@@ -1,7 +1,9 @@
 $(document).ready(function() {
     var itemLenderId;
+
+    // Getting lender id
     $(".reply-lender").on("click", function() {
-        itemLenderId = $(this).attr("lender-id")
+        itemLenderId = $(this).attr("lender-id");
     });
 
     // Sending mail to the Lender
