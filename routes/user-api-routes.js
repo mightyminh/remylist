@@ -158,18 +158,8 @@ module.exports = function(app, passport) {
                     var toMail = dbLender[0].dataValues.Lender.dataValues.email;
                     var borrowSubject = "Remy's list: Borrow " + dbLender[0].dataValues.name +
                         " for " + req.body.numDays + " days";
-                    let mailOptions = {
-                        from: fromMail,
-                        to: toMail,
-                        subject: borrowSubject,
-                        text: req.body.mailMessage
-                    };
-                    transporter.sendMail(mailOptions, (error, info) => {
-                        if (error) {
-                            return console.log(error);
-                        }
-                        console.log('Message %s sent: %s', info.messageId, info.response);
-                    });
+                    var message = req.body.mailMessage;
+                    sendMailToUser(fromMail, toMail, borrowSubject, message);
                     res.render("allItems");
                 });
             }
@@ -195,18 +185,8 @@ module.exports = function(app, passport) {
                 }).then(function(dbBorrower) {
                     var toMail = dbBorrower[0].dataValues.email;
                     var lendSubject = "Regarding your last borrow from Remy's List";
-                    let mailOptions = {
-                        from: fromMail,
-                        to: toMail,
-                        subject: lendSubject,
-                        text: req.body.mailMessage
-                    };
-                    transporter.sendMail(mailOptions, (error, info) => {
-                        if (error) {
-                            return console.log(error);
-                        }
-                        console.log('Message %s sent: %s', info.messageId, info.response);
-                    });
+                    var message = req.body.mailMessage;
+                    sendMailToUser(fromMail, toMail, lendSubject, message);
                     res.render("lend");
                 });
             }
@@ -232,21 +212,26 @@ module.exports = function(app, passport) {
                 }).then(function(dbLender) {
                     var toMail = dbLender[0].dataValues.email;
                     var borrowerSubject = "Regarding my last borrow from you through Remy's List";
-                    let mailOptions = {
-                        from: fromMail,
-                        to: toMail,
-                        subject: borrowerSubject,
-                        text: req.body.mailMessage
-                    };
-                    transporter.sendMail(mailOptions, (error, info) => {
-                        if (error) {
-                            return console.log(error);
-                        }
-                        console.log('Message %s sent: %s', info.messageId, info.response);
-                    });
+                    var message = req.body.mailMessage;
+                    sendMailToUser(fromMail, toMail, borrowerSubject, message);
                     res.render("lend");
                 });
             }
         });
     });
+
+    function sendMailToUser(fromMail, toMail, subject, message) {
+        let mailOptions = {
+            from: fromMail,
+            to: toMail,
+            subject: subject,
+            text: message
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message %s sent: %s', info.messageId, info.response);
+        });
+    }
 };
