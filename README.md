@@ -50,7 +50,7 @@ NPM packages
 * Go to the config directory and change development environment properties.
 * Navigate to the folder where the repository in Terminal.
 * Run the command `npm install` to download the required dependencies.
-* Then type following `node server.js` in terminal inside the directory.
+* Then type `node server.js` in terminal inside the directory.
 * Then run below address on browser.
 	
 	localhost:8080
