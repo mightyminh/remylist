@@ -250,6 +250,7 @@ module.exports = function(app, passport) {
         }
     }
 
+    //Sent email via nodemailer
     function sendMailToUser(fromMail, toMail, subject, message) {
         let mailOptions = {
             from: fromMail,

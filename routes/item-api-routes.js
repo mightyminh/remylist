@@ -129,7 +129,8 @@ module.exports = function(app) {
     // Lender update the status of an item to available 
     app.put("/item-available", function(req, res) {
         db.Item.update({
-            available: true
+            available: true,
+            borrower_id: null
         }, {
             where: {
                 id: req.body.itemId

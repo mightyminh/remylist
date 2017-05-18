@@ -54,9 +54,11 @@
                         </td>
                     {{/if}}
                     <td>
-                        <button type="button" class="btn btn-info btn-xs title-case reply-borrower" borrower-id="{{this.Borrower.id}}" onclick="document.getElementById('id02').style.display='block'">
-                            Email {{this.Borrower.fullName}}
-                        </button>
+                        {{#if this.Borrower.id}}
+                            <button type="button" class="btn btn-info btn-xs title-case reply-borrower" borrower-id="{{this.Borrower.id}}" onclick="document.getElementById('id02').style.display='block'">
+                                Email {{this.Borrower.fullName}}
+                            </button>
+                        {{/if}}
                     </td>
                     <td>
                         <button type="button" class="btn btn-warning btn-xs delete-item" delete-item-id="{{this.id}}">
