@@ -204,7 +204,7 @@ module.exports = function(app, passport) {
                 var userData = data[0].dataValues;
                 cb(userData);
             } else {
-                cb("No email id");
+                cb("No data");
             }
         });
     }
@@ -226,7 +226,7 @@ module.exports = function(app, passport) {
                     }
                     cb(lenderDetails);
                 } else {
-                    cb("No email id");
+                    cb("No data");
                 }
             });
         } else if (role === "borrower") {
@@ -244,7 +244,7 @@ module.exports = function(app, passport) {
                     }
                     cb(borrowerDetails);
                 } else {
-                    cb("No email id");
+                    cb("No data");
                 }
             });
         }
