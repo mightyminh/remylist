@@ -137,26 +137,15 @@ module.exports = function(app, passport) {
     // Requesting the product email by borrower
     app.post('/send-mail', function(req, res) {
         var userDataId = req.user.id;
-        db.User.findAll({
-            where: {
-                id: userDataId
-            }
-        }).then(function(dbUser) {
-            var fromMail = dbUser[0].dataValues.email;
+        getUserInfo(userDataId, function(userData) {
+            var fromMail = userData.email;
             if (isNaN(req.body.itemId)) {
                 console.log("Mail NOT sent");
             } else {
-                db.Item.findAll({
-                    where: {
-                        id: parseInt(req.body.itemId)
-                    },
-                    include: [{
-                        model: db.User,
-                        as: "Lender"
-                    }]
-                }).then(function(dbLender) {
-                    var toMail = dbLender[0].dataValues.Lender.dataValues.email;
-                    var borrowSubject = "Remy's list: Borrow " + dbLender[0].dataValues.name +
+                var itemId = parseInt(req.body.itemId);
+                getItemInfo(itemId, "lender", function(lenderDetails) {
+                    var toMail = lenderDetails.lenderInfo.email;
+                    var borrowSubject = "Remy's list: Borrow " + lenderDetails.itemInfo.name +
                         " for " + req.body.numDays + " days";
                     var message = req.body.mailMessage;
                     sendMailToUser(fromMail, toMail, borrowSubject, message);
@@ -169,21 +158,14 @@ module.exports = function(app, passport) {
     //Email to the borrower by lender
     app.post('/send-reply', function(req, res) {
         var userDataId = req.user.id;
-        db.User.findAll({
-            where: {
-                id: userDataId
-            }
-        }).then(function(dbUser) {
-            var fromMail = dbUser[0].dataValues.email;
+        getUserInfo(userDataId, function(userData) {
+            var fromMail = userData.email;
             if (isNaN(req.body.borrowerId)) {
                 console.log("Mail NOT sent");
             } else {
-                db.User.findAll({
-                    where: {
-                        id: parseInt(req.body.borrowerId)
-                    }
-                }).then(function(dbBorrower) {
-                    var toMail = dbBorrower[0].dataValues.email;
+                var borrowerId = parseInt(req.body.borrowerId);
+                getUserInfo(borrowerId, function(borrowerData) {
+                    var toMail = borrowerData.email;
                     var lendSubject = "Regarding your last borrow from Remy's List";
                     var message = req.body.mailMessage;
                     sendMailToUser(fromMail, toMail, lendSubject, message);
@@ -196,21 +178,14 @@ module.exports = function(app, passport) {
     //Contacting lender by borrower
     app.post('/contact-lender', function(req, res) {
         var userDataId = req.user.id;
-        db.User.findAll({
-            where: {
-                id: userDataId
-            }
-        }).then(function(dbUser) {
-            var fromMail = dbUser[0].dataValues.email;
+        getUserInfo(userDataId, function(userData) {
+            var fromMail = userData.email;
             if (isNaN(req.body.lenderId)) {
                 console.log("Mail NOT sent");
             } else {
-                db.User.findAll({
-                    where: {
-                        id: parseInt(req.body.lenderId)
-                    }
-                }).then(function(dbLender) {
-                    var toMail = dbLender[0].dataValues.email;
+                var lenderId = parseInt(req.body.lenderId);
+                getUserInfo(lenderId, function(lenderData) {
+                    var toMail = lenderData.email;
                     var borrowerSubject = "Regarding my last borrow from you through Remy's List";
                     var message = req.body.mailMessage;
                     sendMailToUser(fromMail, toMail, borrowerSubject, message);
@@ -219,6 +194,61 @@ module.exports = function(app, passport) {
             }
         });
     });
+
+    //Callback function to get info of the logged-in user
+    function getUserInfo(userId, cb) {
+        db.User.findAll({
+            where: { id: userId }
+        }).then(function(data) {
+            if (data[0].dataValues) {
+                var userData = data[0].dataValues;
+                cb(userData);
+            } else {
+                cb("No email id");
+            }
+        });
+    }
+
+    //Callback function to get the information of item and its lender and borrower
+    function getItemInfo(itemId, role, cb) {
+        if (role === "lender") {
+            db.Item.findAll({
+                where: { id: itemId },
+                include: [{
+                    model: db.User,
+                    as: "Lender"
+                }]
+            }).then(function(dbLender) {
+                if (dbLender[0].dataValues) {
+                    var lenderDetails = {
+                        itemInfo: dbLender[0].dataValues,
+                        lenderInfo: dbLender[0].dataValues.Lender.dataValues
+                    }
+                    cb(lenderDetails);
+                } else {
+                    cb("No email id");
+                }
+            });
+        } else if (role === "borrower") {
+            db.Item.findAll({
+                where: { id: itemId },
+                include: [{
+                    model: db.User,
+                    as: "Borrower"
+                }]
+            }).then(function(dbBorrower) {
+                if (dbBorrower[0].dataValues) {
+                    var borrowerDetails = {
+                        itemInfo: dbBorrower[0].dataValues,
+                        borrowerInfo: dbBorrower[0].dataValues.Borrower.dataValues
+                    }
+                    cb(borrowerDetails);
+                } else {
+                    cb("No email id");
+                }
+            });
+        }
+    }
 
     function sendMailToUser(fromMail, toMail, subject, message) {
         let mailOptions = {
