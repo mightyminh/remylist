@@ -17,6 +17,7 @@ This application
 * Javascript
 * jQuery
 * Handlebars
+* MySQL
 * NPM packages
 
 ## Dependencies
