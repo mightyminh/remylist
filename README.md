@@ -1,6 +1,6 @@
 # Remy's List
 
-This application 
+This application allows users to lend and borrow items for free. Lenders upload items which borrowers can browse and request for a certain amount of time. Non-users can also browse items before deciding if they would like to join.
 
 ## Table of Contents
 
@@ -56,8 +56,10 @@ NPM packages
 	
 	localhost:8080
 
-## Screenshots
+## Screen recording
 
-![RemysListWebsite](/screenshots/RemysList.gif)
+![Remy's List](/screenshots/RemysList.gif)
 
 ## Acknowledgements
+
+We would like to thank our instructors: George and Brandon, for their guidance and knowledge. As well as our TAs: Felipe and Travis for their assistance.
