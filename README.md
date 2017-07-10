@@ -58,7 +58,7 @@ NPM packages
 
 ## Screen recording
 
-![Remy's List](/screenshots/RemysList.gif)
+![Remy's List](/public/assets/img/RemysList.gif)
 
 ## Acknowledgements
 
