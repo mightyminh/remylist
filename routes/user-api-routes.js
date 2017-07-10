@@ -10,8 +10,8 @@ var bcrypt = require('bcrypt-nodejs');
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'remylists@gmail.com',
-        pass: 'remylists000'
+        user: '*********',
+        pass: '*******'
     }
 });
 
